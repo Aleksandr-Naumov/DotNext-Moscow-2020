@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Web.Features.Cart
 {
-    public class AddProductInCartCommand : ICommand
+    public class AddProductInCartCommand : ICommand<int>
     {
         public int ProductId { get; set; }
     }

@@ -20,11 +20,10 @@ namespace HightechAngular.Web.Features.Cart
         [HttpPut("Add")]
         [ProducesResponseType((int)HttpStatusCode.Created)]
         public IActionResult Add(
-            [FromServices] ICommandHandler<AddProductInCartCommand> commandHandler,
+            [FromServices] ICommandHandler<AddProductInCartCommand, int> commandHandler,
             [FromBody] int productId)
         {
-            commandHandler.Handle(new AddProductInCartCommand() { ProductId = productId });
-            return Ok(productId);
+            return Ok(commandHandler.Handle(new AddProductInCartCommand() { ProductId = productId }));
         }
 
         [HttpPut("Remove")]

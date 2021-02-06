@@ -23,7 +23,7 @@ namespace HightechAngular.Web.Features.Cart
             [FromServices] ICommandHandler<AddProductInCartCommand> commandHandler,
             [FromBody] int productId)
         {
-            commandHandler.Handle(new AddProductInCartCommand(productId));
+            commandHandler.Handle(new AddProductInCartCommand() { ProductId = productId });
             return Ok(productId);
         }
 
@@ -32,7 +32,7 @@ namespace HightechAngular.Web.Features.Cart
             [FromServices] ICommandHandler<RemoveProductInCartCommand, bool> commandHandler,
             [FromBody] int productId)
         {
-            return commandHandler.Handle(new RemoveProductInCartCommand(productId));
+            return commandHandler.Handle(new RemoveProductInCartCommand() { ProductId = productId });
         }
     }
 }

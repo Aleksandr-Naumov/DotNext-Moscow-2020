@@ -9,7 +9,5 @@ namespace HightechAngular.Web.Features.Cart
     public class RemoveProductInCartCommand : ICommand<bool>
     {
         public int ProductId { get; set; }
-        public RemoveProductInCartCommand(int productId) =>
-            ProductId = productId;
     }
 }

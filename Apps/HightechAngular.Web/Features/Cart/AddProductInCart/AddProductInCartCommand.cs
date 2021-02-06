@@ -10,7 +10,5 @@ namespace HightechAngular.Web.Features.Cart
     public class AddProductInCartCommand : ICommand
     {
         public int ProductId { get; set; }
-        public AddProductInCartCommand(int productId) => 
-            ProductId = productId;
     }
 }

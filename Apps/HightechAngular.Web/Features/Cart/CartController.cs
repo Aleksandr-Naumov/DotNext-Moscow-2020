@@ -13,7 +13,7 @@ namespace HightechAngular.Web.Features.Cart
 {
     public class CartController : ApiControllerBase
     {
-        [HttpGet]
+        [HttpGet] 
         public ActionResult<List<CartItem>> Get([FromServices] ICartStorage storage) =>
             storage.Cart.CartItems.PipeTo(Ok);
 

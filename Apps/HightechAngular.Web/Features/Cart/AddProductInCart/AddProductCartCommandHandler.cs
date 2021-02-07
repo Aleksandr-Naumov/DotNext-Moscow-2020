@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Web.Features.Cart
 {
-    public class AddProductInCartCommandHandler :
-        ICommandHandler<AddProductInCartCommand, int>
+    public class AddProductCartCommandHandler :
+        ICommandHandler<AddProductCart, int>
     {
         private readonly ICartStorage _cartStorage;
         private readonly IQueryable<Product> _products;
 
-        public AddProductInCartCommandHandler(ICartStorage cartStorage,
+        public AddProductCartCommandHandler(ICartStorage cartStorage,
             IQueryable<Product> products)
         {
             _cartStorage = cartStorage;
             _products = products;
         }
 
-        public int Handle(AddProductInCartCommand input)
+        public int Handle(AddProductCart input)
         {
             var product = _products.First(x => x.Id == input.ProductId);
             _cartStorage.Cart.AddProduct(product);

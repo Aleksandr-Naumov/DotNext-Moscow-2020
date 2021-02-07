@@ -12,7 +12,7 @@ namespace HightechAngular.Web.Features.Admin
     public class CompleteOrderAdminCommnadHandler :
         ICommandHandler<CompleteOrderAdmin, Task<HandlerResult<OrderStatus>>>
     {
-        private IQueryable<Order> _orders;
+        private readonly IQueryable<Order> _orders;
         public CompleteOrderAdminCommnadHandler(IQueryable<Order> orders)
         {
             _orders = orders;

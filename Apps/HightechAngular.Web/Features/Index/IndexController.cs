@@ -12,31 +12,19 @@ using Microsoft.AspNetCore.Mvc;
 namespace HightechAngular.Web.Features.Index
 {
     [Route("api")]
-    public class IndexController: ApiControllerBase
+    public class IndexController : ApiControllerBase
     {
         [HttpGet("Bestsellers")]
-        public ActionResult<IEnumerable<BestsellersListItem>> Get(
-            [FromServices] IQueryHandler<GetBestsellersQuery, IEnumerable<BestsellersListItem>> handler,
-            [FromQuery] GetBestsellersQuery query)
-        {
-            return Ok(handler.Handle(query));
-        }
+        public ActionResult<IEnumerable<BestsellersListItem>> Get([FromQuery] GetBestsellers query) =>
+            this.Process(query);
 
         [HttpGet("NewArrivals")]
         [ProducesResponseType(typeof(IEnumerable<NewArrivalsListItem>), StatusCodes.Status200OK)]
-        public ActionResult<IEnumerable<NewArrivalsListItem>> Get(
-            [FromServices] IQueryHandler<GetNewArrivals, IEnumerable<NewArrivalsListItem>> handler,
-            [FromQuery] GetNewArrivals query)
-        {
-            return Ok(handler.Handle(query));
-        }
+        public ActionResult<IEnumerable<NewArrivalsListItem>> Get([FromQuery] GetNewArrivals query) =>
+            this.Process(query);
 
         [HttpGet("Sale")]
-        public ActionResult<IEnumerable<SaleListItem>> Get(
-            [FromServices] IQueryHandler<GetSale, IEnumerable<SaleListItem>> handler,
-            [FromQuery] GetSale query)
-        {
-            return Ok(handler.Handle(query));
-        }
+        public ActionResult<IEnumerable<SaleListItem>> Get([FromQuery] GetSale query) =>
+            this.Process(query);
     }
 }

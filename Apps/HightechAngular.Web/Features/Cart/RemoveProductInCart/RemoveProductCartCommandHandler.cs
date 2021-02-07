@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Web.Features.Cart.RemoveProductInCart
 {
-    public class RemoveProductInCartCommandHandler : ICommandHandler<RemoveProductInCartCommand, bool>
+    public class RemoveProductCartCommandHandler : ICommandHandler<RemoveProductCart, bool>
     {
         private readonly ICartStorage _cartStorage;
 
-        public RemoveProductInCartCommandHandler(ICartStorage cartStorage)
+        public RemoveProductCartCommandHandler(ICartStorage cartStorage)
         {
             _cartStorage = cartStorage;
         }
-        public bool Handle(RemoveProductInCartCommand input)
+        public bool Handle(RemoveProductCart input)
         {
             var res = _cartStorage.Cart.TryRemoveProduct(input.ProductId);
             _cartStorage.SaveChanges();

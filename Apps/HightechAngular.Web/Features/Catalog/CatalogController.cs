@@ -14,18 +14,12 @@ namespace HightechAngular.Web.Features.Catalog
     {
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<ProductListItem>), StatusCodes.Status200OK)]
-        public IActionResult Get(
-            [FromServices] IQueryHandler<GetProducts, IEnumerable<ProductListItem>> handler,
-            [FromQuery] GetProducts query)
-        {
-            return Ok(handler.Handle(query));
-        }
+        public IActionResult Get([FromQuery] GetProducts query) =>
+            this.Process(query);
 
 
         [HttpGet("GetCategories")]
-        public IActionResult GetCategories([FromServices] IQueryable<Category> categories)
-        {
-            return Ok(categories);
-        }
+        public IActionResult GetCategories() =>
+            this.Process(new GetCategoriesQuery());
     }
 }

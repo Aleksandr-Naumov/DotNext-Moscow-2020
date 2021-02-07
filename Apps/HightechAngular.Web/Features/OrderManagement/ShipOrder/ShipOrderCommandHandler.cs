@@ -12,7 +12,7 @@ namespace HightechAngular.Web.Features.Admin
     public class ShipOrderCommandHandler :
         ICommandHandler<ShipOrder, Task<HandlerResult<OrderStatus>>>
     {
-        private IQueryable<Order> _orders;
+        private readonly IQueryable<Order> _orders;
         public ShipOrderCommandHandler(IQueryable<Order> orders)
         {
             _orders = orders;

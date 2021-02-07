@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Web.Features.Account
 {
-    public class CreateNewOrderCommandHandler : ICommandHandler<CreateOrder, int>
+    public class CreateOrderCommandHandler : ICommandHandler<CreateOrder, int>
     {
         private readonly ICartStorage _cartStorage;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateNewOrderCommandHandler(
+        public CreateOrderCommandHandler(
             ICartStorage cartStorage,
             IUnitOfWork unitOfWork)
         {

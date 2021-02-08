@@ -9,13 +9,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Ddd
 {
-    public class EfCoreUnitOfWork: UnitOfWorkBase
+    public class EfCoreUnitOfWork : UnitOfWorkBase
     {
         private readonly DbContext _dbContext;
 
         public EfCoreUnitOfWork(
-            IHandler<IEnumerable<IDomainEvent>> domainEventDispatcher, 
-            DbContext dbContext): 
+            IHandler<IEnumerable<IDomainEvent>> domainEventDispatcher,
+            DbContext dbContext) :
             base(domainEventDispatcher)
         {
             _dbContext = dbContext;
@@ -36,19 +36,14 @@ namespace Infrastructure.Ddd
             _dbContext.Remove(entity);
         }
 
-        public override void Rollback()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override TEntity Find<TEntity>(params object[] id) 
+        public override TEntity Find<TEntity>(params object[] id)
         {
             return (TEntity)_dbContext.Find(typeof(TEntity), id);
         }
 
-        public override Transaction BeginTransaction()
+        public override IUnitOfWorkTransaction BeginTransaction()
         {
-            throw new NotImplementedException();
+            return new EfCoreUnitOfWorkTransaction(_dbContext.Database.BeginTransaction());
         }
 
         protected override void DoCommit()

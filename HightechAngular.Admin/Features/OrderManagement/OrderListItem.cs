@@ -11,15 +11,6 @@ namespace HightechAngular.Admin.Features.OrderManagement
 {
     public class OrderListItem : HasIdBase, IHasCreatedDateString
     {
-        public static readonly Expression<Func<Order, OrderListItem>> Map = x => new OrderListItem()
-        {
-            Id = x.Id,
-            Total = x.Total,
-            Status = x.Status,
-            Created = x.Created,
-            UserName = x.User.Email,
-            DisputeComment = x.Status == OrderStatus.Dispute ? Comment : ""
-        };
         static OrderListItem()
         {
             TypeAdapterConfig<Order, OrderListItem>
@@ -50,6 +41,5 @@ namespace HightechAngular.Admin.Features.OrderManagement
 
         [Display(Name = "Comment")]
         public string DisputeComment { get; set; }
-        private const string Comment = "To do comments";
     }
 }

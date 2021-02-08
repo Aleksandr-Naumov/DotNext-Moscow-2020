@@ -67,7 +67,7 @@ namespace HightechAngular.Orders.Entities
         public DateTime Updated { get; set; }
 
         private List<OrderItem> _orderItems = new List<OrderItem>();
-        // public IEnumerable<OrderItem> OrderItems => _orderItems;
+
         public virtual IEnumerable<OrderItem> OrderItems => _orderItems;
 
         public double Total { get; set; }

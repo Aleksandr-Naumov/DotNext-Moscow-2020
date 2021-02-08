@@ -66,7 +66,7 @@ namespace HightechAngular.Orders.Entities
 
         public DateTime Updated { get; set; }
 
-        private List<OrderItem> _orderItems = new List<OrderItem>();
+        private readonly List<OrderItem> _orderItems = new List<OrderItem>();
 
         public virtual IEnumerable<OrderItem> OrderItems => _orderItems;
 
@@ -75,8 +75,5 @@ namespace HightechAngular.Orders.Entities
         public Guid? TrackingCode { get; set; }
 
         public OrderStatus Status { get; set; }
-        public string Complaint { get; set; }
-
-        public string AdminComment { get; set; }
     }
 }

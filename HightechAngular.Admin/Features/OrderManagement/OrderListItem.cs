@@ -11,16 +11,6 @@ namespace HightechAngular.Admin.Features.OrderManagement
 {
     public class OrderListItem : HasIdBase
     {
-        public static readonly Expression<Func<Order, OrderListItem>> Map = x => new OrderListItem()
-        {
-            Id = x.Id,
-            Total = x.Total,
-            Status = x.Status.ToString(),
-            Created = x.Created.ToString("d"),
-            UserName = x.User.Email,
-            DisputeComment = x.Status == OrderStatus.Dispute ? Comment : ""
-        };
-
         [Display(Name = "Id")]
         public override int Id { get; set; }
 
@@ -38,7 +28,5 @@ namespace HightechAngular.Admin.Features.OrderManagement
 
         [Display(Name = "Comment")]
         public string DisputeComment { get; set; }
-
-        private const string Comment = "To do comments";
     }
 }

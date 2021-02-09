@@ -17,7 +17,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\HightechAngular.Core\HightechAngular.Core.csproj" />
-	  <ProjectReference Include="..\HightechAngular.Identity\HightechAngular.Identity.csproj" />
 	  <ProjectReference Include="..\infrastructure\SwaggerSchema\SwaggerSchema.csproj" />
 	</ItemGroup>
 

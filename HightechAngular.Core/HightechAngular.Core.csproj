@@ -13,7 +13,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\HightechAngular.Identity\HightechAngular.Identity.csproj" />
-	  <ProjectReference Include="..\infrastructure\Infrastructure\Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>

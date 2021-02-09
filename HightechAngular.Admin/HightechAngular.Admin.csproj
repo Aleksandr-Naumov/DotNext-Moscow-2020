@@ -13,9 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\HightechAngular.Core\HightechAngular.Core.csproj" />
 	  <ProjectReference Include="..\HightechAngular.Shop\HightechAngular.Shop.csproj" />
-	  <ProjectReference Include="..\infrastructure\Infrastructure\Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -22,7 +22,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\HightechAngular.Admin\HightechAngular.Admin.csproj" />
-	  <ProjectReference Include="..\HightechAngular.Identity\HightechAngular.Identity.csproj" />
 	</ItemGroup>
 
 </Project>

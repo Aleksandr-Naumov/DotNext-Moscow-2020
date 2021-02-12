@@ -5,6 +5,7 @@ using HightechAngular.Data;
 using HightechAngular.Identity.Entities;
 using HightechAngular.Identity.Services;
 using HightechAngular.Orders;
+using HightechAngular.Shop;
 using HightechAngular.Web;
 using HightechAngular.Web.Features.Catalog;
 using HightechAngular.Web.Filters;

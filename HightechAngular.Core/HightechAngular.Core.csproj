@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<RootNamespace>HightechAngular.Core</RootNamespace>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="EFCore.BulkExtensions" Version="3.2.5" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\HightechAngular.Identity\HightechAngular.Identity.csproj" />
+	</ItemGroup>
+
+</Project>

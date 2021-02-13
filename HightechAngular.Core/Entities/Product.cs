@@ -15,8 +15,6 @@ namespace HightechAngular.Orders.Entities
 
         protected Product()
         {
-            Name = default;
-            Category = default;
         }
 
         public Product(Category category, string name, double price, int discountPercent)
@@ -26,7 +24,6 @@ namespace HightechAngular.Orders.Entities
             Name = name;
             Price = price;
             DiscountPercent = discountPercent;
-            DateCreated = DateTime.UtcNow;
             this.EnsureInvariant();
         }
 
@@ -36,7 +33,7 @@ namespace HightechAngular.Orders.Entities
 
         public int DiscountPercent { get; protected set; }
 
-        public DateTime DateCreated { get; protected set; }
+        public DateTime DateCreated { get; protected set; } = DateTime.UtcNow;
 
         public virtual Category Category { get; protected set; }
 

@@ -36,6 +36,7 @@ namespace HightechAngular.Orders.Entities
         
         public int Count { get; protected set; }
         
+        [Range(1,int.MaxValue)]
         public int ProductId { get; protected set; }
     }
 }

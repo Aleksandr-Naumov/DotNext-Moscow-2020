@@ -6,12 +6,13 @@ using Force.Ddd;
 using Force.Ddd.DomainEvents;
 using Force.Extensions;
 using HightechAngular.Identity.Entities;
+using Infrastructure.Ddd;
 using Infrastructure.Ddd.Domain.State;
 
 namespace HightechAngular.Orders.Entities
 {
     // ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
-    public class Order : HasIdBase
+    public class Order : IntEntityBase
     {
         public static readonly OrderSpecs Specs = new OrderSpecs();
 

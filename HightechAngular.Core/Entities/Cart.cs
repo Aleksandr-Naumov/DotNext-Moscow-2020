@@ -60,7 +60,11 @@ namespace HightechAngular.Orders.Entities
 
             if (cartItem == null)
             {
-                cartItem = new CartItem(product);
+                cartItem = new CartItem(
+                    product.Id,
+                    product.Name,
+                    product.Category.Name,
+                    product.GetDiscountedPrice());
 
                 _cartItems.Add(cartItem);
             }

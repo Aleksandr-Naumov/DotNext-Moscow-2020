@@ -8,17 +8,22 @@ namespace HightechAngular.Orders.Entities
     // JSON Serialization prevents encapsulation :(
     public class CartItem
     {
-        public CartItem(Product product, int count = 1)
-        {
-            ProductId = product.Id;
-            ProductName = product.Name;
-            CategoryName = product.Category.Name;
-            Price = product.GetDiscountedPrice();
-            Count = count;
-        }
+        //public CartItem(Product product, int count = 1)
+        //{
+        //    ProductId = product.Id;
+        //    ProductName = product.Name;
+        //    CategoryName = product.Category.Name;
+        //    Price = product.GetDiscountedPrice();
+        //    Count = count;
+        //}
 
-        [JsonConstructor]
-        private CartItem(int productId, string productName, string categoryName, double price, int count)
+        //[JsonConstructor]
+        public CartItem(
+            int productId, 
+            string productName, 
+            string categoryName, 
+            double price, 
+            int count = 1)
         {
             ProductId = productId;
             ProductName = productName;

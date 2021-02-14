@@ -6,7 +6,7 @@ using Infrastructure.SwaggerSchema.Dropdowns.Providers;
 
 namespace HightechAngular.Web.Features.OrderManagement
 {
-    public class PayOrderDropdownProvider : IDropdownProvider<PayOrder>
+    public class PayOrderDropdownProvider : IDropdownProvider<PayMyOrder>
     {
         private readonly IServiceProvider _serviceProvider;
 
@@ -17,7 +17,7 @@ namespace HightechAngular.Web.Features.OrderManagement
 
         public Task<Dropdowns> GetDropdownOptionsAsync()
         {
-            return _serviceProvider.DropdownsFor<PayOrder>();
+            return _serviceProvider.DropdownsFor<PayMyOrder>();
         }
     }
 }

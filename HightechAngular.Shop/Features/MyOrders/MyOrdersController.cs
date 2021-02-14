@@ -28,7 +28,7 @@ namespace HightechAngular.Web.Features.MyOrders
             await this.ProcessAsync(command);
 
         [HttpPut("PayOrder")]
-        public async Task<IActionResult> PayOrder([FromBody] PayOrder command) =>
+        public async Task<IActionResult> PayOrder([FromBody] PayMyOrder command) =>
             await this.ProcessAsync(command);
     }
 }

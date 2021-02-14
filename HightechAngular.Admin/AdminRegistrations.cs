@@ -11,7 +11,7 @@ namespace HightechAngular.Admin
     {
         public static void RegisterAdmin(this IServiceCollection services)
         {
-            services.AddScoped<IDropdownProvider<PayOrder>, PayOrderDropdownProvider>();
+            services.AddScoped<IDropdownProvider<PayMyOrder>, PayOrderDropdownProvider>();
             services.AddScoped<IDropdownProvider<OrderListItem>, OrderListItemDropdownProvider>();
             services.AddScoped<IDropdownProvider<AllOrdersItem>, CreateOrderDropdownProvider>();
         }

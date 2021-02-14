@@ -70,7 +70,7 @@ namespace HightechAngular.Orders.Entities
             }
             else
             {
-                cartItem.IncreaseCount();
+                cartItem.IncrementCount();
             }
         }
 

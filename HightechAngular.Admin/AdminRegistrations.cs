@@ -1,6 +1,4 @@
 using HightechAngular.Admin.Features.OrderManagement;
-using HightechAngular.Shop.Features.MyOrders;
-using HightechAngular.Web.Features.MyOrders;
 using HightechAngular.Web.Features.OrderManagement;
 using Infrastructure.SwaggerSchema.Dropdowns.Providers;
 using Microsoft.Extensions.DependencyInjection;

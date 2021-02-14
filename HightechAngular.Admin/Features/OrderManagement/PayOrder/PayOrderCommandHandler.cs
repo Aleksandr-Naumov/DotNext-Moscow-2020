@@ -1,5 +1,6 @@
 ﻿using Force.Ccc;
 using Force.Cqrs;
+using HightechAngular.Admin.Features.OrderManagement;
 using HightechAngular.Orders.Entities;
 using HightechAngular.Web.Features.MyOrders;
 using Infrastructure.Cqrs;
@@ -8,21 +9,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HightechAngular.Web.Features.Account
+namespace HightechAngular.Admin.Features.OrderManagement
 {
-    public class PayMyOrderCommandHandler :
-        ICommandHandler<PayMyOrder, Task<HandlerResult<OrderStatus>>>
+    public class PayOrderCommandHandler :
+        ICommandHandler<PayOrder, Task<HandlerResult<OrderStatus>>>
     {
         private readonly IQueryable<Order> _orders; 
         private readonly IUnitOfWork _unitOfWork;
-        public PayMyOrderCommandHandler(
+        public PayOrderCommandHandler(
             IQueryable<Order> orders,
             IUnitOfWork unitOfWork)
         {
             _orders = orders;
             _unitOfWork = unitOfWork;
         }
-        public async Task<HandlerResult<OrderStatus>> Handle(PayMyOrder input)
+        public async Task<HandlerResult<OrderStatus>> Handle(PayOrder input)
         {
             var order = _orders.First(x => x.Id == input.OrderId);
             await Task.Delay(1000);

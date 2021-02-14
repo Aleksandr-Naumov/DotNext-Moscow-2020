@@ -9,20 +9,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HightechAngular.Web.Features.Admin
+namespace HightechAngular.Shop.Features.MyOrders
 {
-    public class PayOrderCommandHandler :
-        ICommandHandler<PayOrder, Task<HandlerResult<OrderStatus>>>
+    public class PayMyOrderCommandHandler :
+        ICommandHandler<PayMyOrder, Task<HandlerResult<OrderStatus>>>
     {
         private readonly IQueryable<Order> _orders;
         private readonly IUnitOfWork _unitOfWork;
 
-        public PayOrderCommandHandler(IQueryable<Order> orders, IUnitOfWork unitOfWork)
+        public PayMyOrderCommandHandler(IQueryable<Order> orders, IUnitOfWork unitOfWork)
         {
             _orders = orders;
             _unitOfWork = unitOfWork;
         }
-        public async Task<HandlerResult<OrderStatus>> Handle(PayOrder input)
+        public async Task<HandlerResult<OrderStatus>> Handle(PayMyOrder input)
         {
             await Task.Delay(1000);
             var order = _orders.First(x => x.Id == input.OrderId);

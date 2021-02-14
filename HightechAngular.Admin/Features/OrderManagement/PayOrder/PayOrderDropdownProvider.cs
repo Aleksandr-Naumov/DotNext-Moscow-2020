@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
+using HightechAngular.Admin.Features.OrderManagement;
 using HightechAngular.Shop.Features.MyOrders;
 using Infrastructure.SwaggerSchema.Dropdowns;
 using Infrastructure.SwaggerSchema.Dropdowns.Providers;
 
 namespace HightechAngular.Web.Features.OrderManagement
 {
-    public class PayOrderDropdownProvider : IDropdownProvider<PayMyOrder>
+    public class PayOrderDropdownProvider : IDropdownProvider<PayOrder>
     {
         private readonly IServiceProvider _serviceProvider;
 
@@ -17,7 +18,7 @@ namespace HightechAngular.Web.Features.OrderManagement
 
         public Task<Dropdowns> GetDropdownOptionsAsync()
         {
-            return _serviceProvider.DropdownsFor<PayMyOrder>();
+            return _serviceProvider.DropdownsFor<PayOrder>();
         }
     }
 }

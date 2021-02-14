@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HightechAngular.Web.Features.Admin
+namespace HightechAngular.Shop.Features.MyOrders
 {
     public class PayMyOrderCommandHandler :
         ICommandHandler<PayMyOrder, Task<HandlerResult<OrderStatus>>>

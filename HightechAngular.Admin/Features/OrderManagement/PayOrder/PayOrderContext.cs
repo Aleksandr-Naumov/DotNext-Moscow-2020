@@ -15,7 +15,7 @@ namespace HightechAngular.Admin.Features.OrderManagement
         ICommand<Task<HandlerResult<OrderStatus>>>
     {
         [Required]
-        public Order Order { get; set; }
+        public Order Order { get; }
         public PayOrderContext(PayOrder request, Order order) : base(request)
         {
             Order = order;

@@ -15,7 +15,7 @@ namespace HightechAngular.Shop.Features.MyOrders
         ICommand<Task<HandlerResult<OrderStatus>>>
     {
         [Required]
-        public Order Order { get; set; }
+        public Order Order { get; }
         public PayMyOrderContext(PayMyOrder request, Order order) : base(request)
         {
             Order = order;

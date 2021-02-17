@@ -15,7 +15,7 @@ namespace HightechAngular.Shop.Features.Cart
         ICommand<int>
     {
         [Required]
-        public Product Product { get; set; }
+        public Product Product { get; }
         public AddProductCartContext(AddProductCart request, Product product) : base(request)
         {
             Product = product;

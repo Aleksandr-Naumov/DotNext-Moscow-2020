@@ -15,7 +15,7 @@ namespace HightechAngular.Shop.Features.Cart
         ICommand<bool>
     {
         [Required]
-        public Product Product { get; set; }
+        public Product Product { get; }
         public RemoveProductCartContext(RemoveProductCart request, Product product) : base(request)
         {
             Product = product;

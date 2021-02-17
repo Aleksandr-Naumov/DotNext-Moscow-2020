@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,22 +22,28 @@ namespace HightechAngular.Admin.Features.OrderManagement
         public IActionResult GetAll([FromQuery] GetAllOrders query) =>
             this.Process(query);
 
-        [HttpPut("PayOrder")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> PayOrder([FromBody] PayOrder command) =>
-            await this.ProcessAsync(command);
-
         [HttpGet("GetOrders")]
         [ProducesResponseType(typeof(AllOrdersItem), StatusCodes.Status200OK)]
         public IActionResult GetOrders([FromQuery] GetMyOrders query) =>
             this.Process(query);
 
+        [HttpPut("PayOrder")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> PayOrder(
+            [FromServices] Func<PayOrder, PayOrderContext> factory,
+            [FromBody] PayOrder command) =>
+            await this.ProcessAsync(factory(command));
+
         [HttpPut("Shipped")]
-        public async Task<IActionResult> Shipped([FromBody] ShipOrder command) =>
-            await this.ProcessAsync(command);
+        public async Task<IActionResult> Shipped(
+            [FromServices] Func<ShipOrder, ShipOrderContext> factory,
+            [FromBody] ShipOrder command) =>
+            await this.ProcessAsync(factory(command));
 
         [HttpPut("Complete")]
-        public async Task<IActionResult> Complete([FromBody] CompleteOrderAdmin command) =>
-            await this.ProcessAsync(command);
+        public async Task<IActionResult> Complete(
+            [FromServices] Func<CompleteOrderAdmin, CompleteOrderAdminContext> factory,
+            [FromBody] CompleteOrderAdmin command) =>
+            await this.ProcessAsync(factory(command));
     }
 }

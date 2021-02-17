@@ -6,10 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HightechAngular.Web.Features.Cart
+namespace HightechAngular.Shop.Features.Cart
 {
     public class AddProductCartCommandHandler :
-        ICommandHandler<AddProductCart, int>
+        ICommandHandler<AddProductCartContext, int>
     {
         private readonly ICartStorage _cartStorage;
         private readonly IQueryable<Product> _products;
@@ -21,12 +21,12 @@ namespace HightechAngular.Web.Features.Cart
             _products = products;
         }
 
-        public int Handle(AddProductCart input)
+        public int Handle(AddProductCartContext input)
         {
-            var product = _products.First(x => x.Id == input.ProductId);
+            var product = _products.First(x => x.Id == input.Product.Id);
             _cartStorage.Cart.AddProduct(product);
             _cartStorage.SaveChanges();
-            return input.ProductId;
+            return input.Product.Id;
         }
     }
 }

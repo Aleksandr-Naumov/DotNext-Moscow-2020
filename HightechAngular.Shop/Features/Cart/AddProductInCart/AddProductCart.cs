@@ -6,11 +6,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HightechAngular.Web.Features.Cart
+namespace HightechAngular.Shop.Features.Cart
 {
-    public class AddProductCart : ICommand<int>
+    public class AddProductCart : IHasId<int>, ICommand<int>
     {
-        [Range(1, int.MaxValue)]
-        public int ProductId { get; set; }
+        public int Id { get; set; }
+
+        object IHasId.Id { get; }
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace HightechAngular.Web.Features.Admin
 {
     public class ShipOrderCommandHandler :
-        ICommandHandler<ShipOrder, Task<HandlerResult<OrderStatus>>>
+        ICommandHandler<ShipOrderContext, Task<HandlerResult<OrderStatus>>>
     {
         private readonly IQueryable<Order> _orders;
         public ShipOrderCommandHandler(IQueryable<Order> orders)
@@ -18,9 +18,9 @@ namespace HightechAngular.Web.Features.Admin
             _orders = orders;
         }
 
-        public async Task<HandlerResult<OrderStatus>> Handle(ShipOrder input)
+        public async Task<HandlerResult<OrderStatus>> Handle(ShipOrderContext input)
         {
-            var order = _orders.First(x => x.Id == input.OrderId);
+            var order = _orders.First(x => x.Id == input.Order.Id);
             await Task.Delay(1000);
             var result = order.BecomeShipped();
             return new HandlerResult<OrderStatus>(result);

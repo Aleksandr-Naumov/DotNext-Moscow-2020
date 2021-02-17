@@ -2,9 +2,9 @@
 
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
-		<Nullable>disable</Nullable>
 		<RootNamespace>HightechAngular.Admin</RootNamespace>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>

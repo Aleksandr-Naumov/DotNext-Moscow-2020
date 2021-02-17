@@ -18,7 +18,7 @@ namespace HightechAngular.Orders.Services
             _userContext = userContext;
         }
 
-        private Cart _cart;
+        private Cart _cart = default!;
         private static readonly string _cartKey = "Cart";
 
         public Cart Cart =>

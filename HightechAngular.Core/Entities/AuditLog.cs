@@ -21,11 +21,11 @@ namespace HightechAngular.Admin.Entities
         }
 
         [Required]
-        public string EventName { get; protected set; }
-        
+        public string EventName { get; protected set; } = default!;
+
         [Required]
-        public string UserName { get; protected set; }
-        
+        public string UserName { get; protected set; } = default!;
+
         public int? EntityId { get; protected set; }
 
         public override string ToString() => $"{UserName} / {EventName} / {EntityId}";

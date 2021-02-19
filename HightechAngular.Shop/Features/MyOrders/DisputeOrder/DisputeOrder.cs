@@ -1,6 +1,6 @@
 using HightechAngular.Orders.Base;
 
-namespace HightechAngular.Web.Features.MyOrders
+namespace HightechAngular.Shop.Features.MyOrders
 {
     public class DisputeOrder : ChangeOrderStateBase
     {

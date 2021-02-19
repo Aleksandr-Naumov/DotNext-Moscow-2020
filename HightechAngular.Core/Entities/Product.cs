@@ -11,7 +11,7 @@ namespace HightechAngular.Orders.Entities
 {
     public class Product : IntEntityBase
     {
-        public static readonly ProductSpecs Specs = new ProductSpecs();
+        public static readonly ProductSpecs Specs = ProductSpecs.Instance;
 
         protected Product()
         {

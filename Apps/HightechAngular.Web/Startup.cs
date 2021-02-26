@@ -11,7 +11,6 @@ using HightechAngular.Web.Features.Catalog;
 using HightechAngular.Web.Filters;
 using Infrastructure;
 using Infrastructure.Extensions;
-//using Infrastructure.Extensions;
 using Infrastructure.SwaggerSchema.Dropdowns.Providers;
 using Infrastructure.SwaggerSchema.TypeProvider;
 using Microsoft.AspNetCore.Authentication;
@@ -98,7 +97,7 @@ namespace HightechAngular.Web
             services
                 .AddAuthentication()
                 .AddIdentityServerJwt();
-            
+
             services.AddScoped<IUserContext, UserContext>();
         }
 
@@ -123,7 +122,7 @@ namespace HightechAngular.Web
             }
 
             app.UseRouting();
-            
+
             var fordwardedHeaderOptions = new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
@@ -137,9 +136,9 @@ namespace HightechAngular.Web
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseIdentityServer();
-            
+
             app.UseSession();
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

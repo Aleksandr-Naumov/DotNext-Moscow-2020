@@ -3,7 +3,8 @@ using Force.Ddd;
 
 namespace Infrastructure.OperationContext
 {
-    public abstract class ByIdOperationContextBase<TKey, TRequest> : OperationContextBase<TRequest>, IHasId<TKey>
+    public abstract class ByIdOperationContextBase<TKey, TRequest> : 
+        OperationContextBase<TRequest>, IHasId<TKey>
         where TRequest : class, IHasId<TKey>
         where TKey : IEquatable<TKey>
     {

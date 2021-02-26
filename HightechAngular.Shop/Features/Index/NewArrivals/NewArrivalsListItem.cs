@@ -12,7 +12,7 @@ namespace HightechAngular.Web.Dto
     {
         static NewArrivalsListItem()
         {
-            TypeAdapterConfig<Product, SaleListItem>
+            TypeAdapterConfig<Product, NewArrivalsListItem>
                 .NewConfig()
                 .Map(dest => dest.Price, Product.DiscountedPriceExpression)
                 .Map(dest => dest.DateCreatedName, src => src.DateCreated.ToString("d"));

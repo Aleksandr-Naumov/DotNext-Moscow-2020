@@ -13,7 +13,7 @@ namespace HightechAngular.Web.Features.Index
     {
         static BestsellersListItem()
         {
-            TypeAdapterConfig<Product, SaleListItem>
+            TypeAdapterConfig<Product, BestsellersListItem>
                 .NewConfig()
                 .Map(dest => dest.Price, Product.DiscountedPriceExpression)
                 .Map(dest => dest.DateCreatedName, src => src.DateCreated.ToString("d"));

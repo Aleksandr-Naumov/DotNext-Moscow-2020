@@ -18,15 +18,15 @@ namespace HightechAngular.Shop.Features.MyOrders
         public double Total { get; set; }
 
         [Display(Name = "Status")]
-        public string Status { get; set; }
+        public string Status { get; set; } = default!;
 
         [Display(Name = "Created")]
-        public string Created { get; set; }
+        public string Created { get; set; } = default!;
 
         [Display(Name = "UserName")]
-        public string UserName { get; set; }
+        public string UserName { get; set; } = default!;
 
         [Display(Name = "Comment")]
-        public string DisputeComment { get; set; }
+        public string DisputeComment { get; set; } = default!;
     }
 }

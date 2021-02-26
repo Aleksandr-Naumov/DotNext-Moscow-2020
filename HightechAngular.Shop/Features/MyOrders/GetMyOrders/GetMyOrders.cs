@@ -7,6 +7,6 @@ namespace HightechAngular.Shop.Features.MyOrders
     {
         public int Id { get; set; }
 
-        object IHasId.Id { get; }
+        object? IHasId.Id { get; }
     }
 }

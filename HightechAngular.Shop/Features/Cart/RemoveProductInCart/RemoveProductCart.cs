@@ -12,6 +12,6 @@ namespace HightechAngular.Shop.Features.Cart
     {
         public int Id { get; set; }
 
-        object IHasId.Id { get; }
+        object? IHasId.Id { get; }
     }
 }

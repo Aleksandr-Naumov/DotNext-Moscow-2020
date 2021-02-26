@@ -16,12 +16,12 @@ namespace HightechAngular.Admin.Features.OrderManagement
         public double Total { get; set; }
         
         [Display(Name = "Status")]
-        public string Status { get; set; }
-        
+        public string Status { get; set; } = default!;
+
         [Display(Name = "Created")]
-        public string Created { get; set; }
-        
+        public string Created { get; set; } = default!;
+
         [HiddenInput]
-        public string UserId { get; set; }
+        public string UserId { get; set; } = default!;
     }
 }

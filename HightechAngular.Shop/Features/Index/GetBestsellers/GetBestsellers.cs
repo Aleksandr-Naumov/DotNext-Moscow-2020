@@ -11,6 +11,6 @@ namespace HightechAngular.Shop.Features.Index.GetBestsellers
     {
         public int Id { get; set; }
 
-        object IHasId.Id { get; }
+        object? IHasId.Id { get; }
     }
 }

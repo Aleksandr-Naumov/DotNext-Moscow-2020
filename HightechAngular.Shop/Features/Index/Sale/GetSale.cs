@@ -11,7 +11,7 @@ namespace HightechAngular.Shop.Features.Index.Sale
     {
         public int Id { get; set; }
 
-        object IHasId.Id { get; }
+        object? IHasId.Id { get; }
         public override IOrderedQueryable<SaleListItem> Sort(IQueryable<SaleListItem> queryable)
         {
             if (Order == "dateCreated")

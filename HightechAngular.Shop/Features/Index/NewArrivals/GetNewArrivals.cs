@@ -11,7 +11,7 @@ namespace HightechAngular.Shop.Features.Index.NewArrivals
     {
         public int Id { get; set; }
 
-        object IHasId.Id { get; }
+        object? IHasId.Id { get; }
         public override IOrderedQueryable<NewArrivalsListItem> Sort(IQueryable<NewArrivalsListItem> queryable)
         {
             if (Order == "dateCreated")

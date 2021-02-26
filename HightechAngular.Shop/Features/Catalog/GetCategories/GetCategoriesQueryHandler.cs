@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Web.Features.Catalog.GetCategories
 {
-    public class GetCategoriesQueryHandler : GetIntEnumerableQueryHandlerBase<GetCategoriesQuery, Category, CategoryListItem>
+    public class GetCategoriesQueryHandler : GetIntEnumerableQueryHandlerBase<GetCategoriesQueryContext, Category, CategoryListItem>
     {
         public GetCategoriesQueryHandler(IQueryable<Category> queryable) : base(queryable)
         {

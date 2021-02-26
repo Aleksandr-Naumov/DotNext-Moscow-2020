@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Force.Cqrs;
@@ -14,12 +15,14 @@ namespace HightechAngular.Web.Features.Catalog
     {
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<ProductListItem>), StatusCodes.Status200OK)]
-        public IActionResult Get([FromQuery] GetProducts query) =>
-            this.Process(query);
+        public IActionResult Get(
+            [FromServices] Func<GetProducts, GetProductsContext> factory,
+            [FromQuery] GetProducts query) =>
+            this.Process(factory(query));
 
 
         [HttpGet("GetCategories")]
-        public IActionResult GetCategories() =>
-            this.Process(new GetCategoriesQuery());
+        public IActionResult GetCategories([FromServices] Func<GetCategoriesQuery, GetCategoriesQueryContext> factory) =>
+            this.Process(factory(new GetCategoriesQuery()));
     }
 }

@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 namespace HightechAngular.Web.Features.Catalog
 {
     public class GetProductsQueryHandler :
-        IQueryHandler<GetProducts, IEnumerable<ProductListItem>>
+        IQueryHandler<GetProductsContext, IEnumerable<ProductListItem>>
     {
         private readonly IQueryable<Product> _products;
         public GetProductsQueryHandler(IQueryable<Product> products)
         {
             _products = products;
         }
-        public IEnumerable<ProductListItem> Handle(GetProducts input) =>
+        public IEnumerable<ProductListItem> Handle(GetProductsContext input) =>
             _products
-                .Where(x => x.Category.Id == input.CategoryId)
+                .Where(x => x.Category.Id == input.Category.Id)
                 .ProjectToType<ProductListItem>()
                 .ToList();
     }

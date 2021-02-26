@@ -18,8 +18,10 @@ namespace HightechAngular.Admin.Features.OrderManagement
     {
         [HttpGet()]
         [ProducesResponseType(typeof(OrderListItem), StatusCodes.Status200OK)]
-        public IActionResult GetAll([FromQuery] GetAllOrders query) =>
-            this.Process(query);
+        public IActionResult GetAll(
+            [FromServices] Func<GetAllOrders, GetAllOrdersContext> factory,
+            [FromQuery] GetAllOrders query) =>
+            this.Process(factory(query));
 
         [HttpGet("GetOrders")]
         [ProducesResponseType(typeof(AllOrdersItem), StatusCodes.Status200OK)]

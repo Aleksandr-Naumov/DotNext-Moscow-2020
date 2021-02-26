@@ -12,11 +12,8 @@ namespace HightechAngular.Shop.Features.Index.GetBestsellers
         QueryByIntIdOperationContextBase<IEnumerable<BestsellersListItem>, GetBestsellers>,
         IQuery<IEnumerable<BestsellersListItem>>
     {
-        [Required]
-        public GetBestsellers GetBestsellers { get; set; }
         public GetBestsellersContext(GetBestsellers request) : base(request)
         {
-            GetBestsellers = request;
         }
     }
 }

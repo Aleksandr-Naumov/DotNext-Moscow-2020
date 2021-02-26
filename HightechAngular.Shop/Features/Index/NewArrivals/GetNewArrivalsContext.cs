@@ -12,11 +12,8 @@ namespace HightechAngular.Shop.Features.Index.NewArrivals
         QueryByIntIdOperationContextBase<IEnumerable<NewArrivalsListItem>, GetNewArrivals>,
         IQuery<IEnumerable<NewArrivalsListItem>>
     {
-        [Required]
-        public GetNewArrivals NewArrivals { get; set; }
         public GetNewArrivalsContext(GetNewArrivals request) : base(request)
         {
-            NewArrivals = request;
         }
     }
 }

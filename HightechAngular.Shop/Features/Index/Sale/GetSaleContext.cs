@@ -12,11 +12,8 @@ namespace HightechAngular.Shop.Features.Index.Sale
         QueryByIntIdOperationContextBase<IEnumerable<SaleListItem>, GetSale>,
         IQuery<IEnumerable<SaleListItem>>
     {
-        [Required]
-        public GetSale Sale { get; }
         public GetSaleContext(GetSale request) : base(request)
         {
-            Sale = request;
         }
     }
 }

@@ -9,11 +9,8 @@ namespace HightechAngular.Shop.Features.MyOrders
         QueryByIntIdOperationContextBase<IEnumerable<MyOrdersListItem>, GetMyOrders>,
         IQuery<IEnumerable<MyOrdersListItem>>
     {
-        [Required]
-        public GetMyOrders MyOrders { get; }
         public GetMyOrdersContext(GetMyOrders request) : base(request)
         {
-            MyOrders = request;
         }
     }
 }

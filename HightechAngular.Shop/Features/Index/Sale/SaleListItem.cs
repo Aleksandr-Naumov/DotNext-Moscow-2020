@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HightechAngular.Web.Dto
+namespace HightechAngular.Shop.Features.Index.Sale
 {
     public class SaleListItem : HasIdBase
     {

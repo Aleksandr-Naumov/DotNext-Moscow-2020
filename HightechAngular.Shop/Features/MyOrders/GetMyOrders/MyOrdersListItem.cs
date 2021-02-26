@@ -7,7 +7,7 @@ using HightechAngular.Orders.Entities;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HightechAngular.Shop.Features.MyOrders.GetMyOrders
+namespace HightechAngular.Shop.Features.MyOrders
 {
     public class MyOrdersListItem : HasIdBase
     {

@@ -7,7 +7,6 @@ using Force.Cqrs;
 using Force.Extensions;
 using HightechAngular.Orders.Entities;
 using HightechAngular.Shop.Features.MyOrders;
-using HightechAngular.Web.Features.MyOrders;
 using Infrastructure.AspNetCore;
 using Infrastructure.Cqrs;
 using Microsoft.AspNetCore.Http;
@@ -24,8 +23,10 @@ namespace HightechAngular.Admin.Features.OrderManagement
 
         [HttpGet("GetOrders")]
         [ProducesResponseType(typeof(AllOrdersItem), StatusCodes.Status200OK)]
-        public IActionResult GetOrders([FromQuery] GetMyOrders query) =>
-            this.Process(query);
+        public IActionResult GetOrders(
+            [FromServices] Func<GetMyOrders, GetMyOrdersContext> factory,
+            [FromQuery] GetMyOrders query) =>
+            this.Process(factory(query));
 
         [HttpPut("PayOrder")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

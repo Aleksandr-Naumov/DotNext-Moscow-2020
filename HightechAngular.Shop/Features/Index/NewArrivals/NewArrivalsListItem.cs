@@ -6,7 +6,7 @@ using HightechAngular.Orders.Entities;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HightechAngular.Web.Dto
+namespace HightechAngular.Shop.Features.Index.NewArrivals
 {
     public class NewArrivalsListItem : HasIdBase
     {

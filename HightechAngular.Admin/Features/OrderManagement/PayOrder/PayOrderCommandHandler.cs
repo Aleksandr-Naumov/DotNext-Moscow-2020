@@ -2,7 +2,6 @@
 using Force.Cqrs;
 using HightechAngular.Admin.Features.OrderManagement;
 using HightechAngular.Orders.Entities;
-using HightechAngular.Web.Features.MyOrders;
 using Infrastructure.Cqrs;
 using System;
 using System.Collections.Generic;

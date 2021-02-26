@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using HightechAngular.Shop.Features.MyOrders.GetMyOrders;
 using Infrastructure.SwaggerSchema.Dropdowns;
 using Infrastructure.SwaggerSchema.Dropdowns.Providers;
 

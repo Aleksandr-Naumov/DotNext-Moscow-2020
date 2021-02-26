@@ -3,11 +3,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using Force.Ddd;
 using HightechAngular.Orders.Entities;
-using HightechAngular.Web.Dto;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HightechAngular.Web.Features.Index
+namespace HightechAngular.Shop.Features.Index.GetBestsellers
 {
     public class BestsellersListItem: HasIdBase
     {

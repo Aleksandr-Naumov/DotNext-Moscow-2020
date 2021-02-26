@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using HightechAngular.Shop.Features.MyOrders;
-using HightechAngular.Shop.Features.MyOrders.GetMyOrders;
 using Infrastructure.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HightechAngular.Web.Features.MyOrders
+namespace HightechAngular.Shop.Features.MyOrders
 {
     public class MyOrdersController : ApiControllerBase
     {
@@ -17,8 +15,10 @@ namespace HightechAngular.Web.Features.MyOrders
             this.Process(query);
 
         [HttpGet("GetMyOrders")]
-        public ActionResult<IEnumerable<MyOrdersListItem>> GetMyOrders([FromQuery] GetMyOrders query) =>
-            this.Process(query);
+        public ActionResult<IEnumerable<MyOrdersListItem>> GetMyOrders(
+            [FromServices] Func<GetMyOrders, GetMyOrdersContext> factory,
+            [FromQuery] GetMyOrders query) =>
+            this.Process(factory(query));
 
         [HttpPut("Dispute")]
         public async Task<IActionResult> Dispute(

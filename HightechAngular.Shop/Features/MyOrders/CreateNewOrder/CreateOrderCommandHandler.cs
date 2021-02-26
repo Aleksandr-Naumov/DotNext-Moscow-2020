@@ -2,13 +2,12 @@
 using Force.Cqrs;
 using HightechAngular.Orders.Entities;
 using HightechAngular.Orders.Services;
-using HightechAngular.Web.Features.MyOrders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HightechAngular.Web.Features.Account
+namespace HightechAngular.Shop.Features.MyOrders
 {
     public class CreateOrderCommandHandler : ICommandHandler<CreateOrder, int>
     {

@@ -1,6 +1,5 @@
 ﻿using HightechAngular.Admin.Features.OrderManagement;
 using HightechAngular.Orders.Entities;
-using HightechAngular.Web.Features.MyOrders;
 using Infrastructure.Cqrs.Read;
 using JetBrains.Annotations;
 using System;

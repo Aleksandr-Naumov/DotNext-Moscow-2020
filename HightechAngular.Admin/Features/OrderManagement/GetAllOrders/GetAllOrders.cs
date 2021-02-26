@@ -1,5 +1,4 @@
 ﻿using Force.Cqrs;
-using HightechAngular.Web.Features.MyOrders;
 
 namespace HightechAngular.Admin.Features.OrderManagement
 {

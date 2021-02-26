@@ -1,9 +1,12 @@
 ﻿using Force.Cqrs;
-using HightechAngular.Shop.Features.MyOrders.GetMyOrders;
+using Force.Ddd;
 
-namespace HightechAngular.Web.Features.MyOrders
+namespace HightechAngular.Shop.Features.MyOrders
 {
-    public class GetMyOrders : FilterQuery<MyOrdersListItem>
+    public class GetMyOrders : FilterQuery<MyOrdersListItem>, IHasId<int>
     {
+        public int Id { get; set; }
+
+        object IHasId.Id { get; }
     }
 }

@@ -8,13 +8,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="%2a%2a\**" />
-	  <Content Remove="%2a%2a\**" />
-	  <EmbeddedResource Remove="%2a%2a\**" />
-	  <None Remove="%2a%2a\**" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <PackageReference Include="EFCore.BulkExtensions" Version="3.2.5" />
 	  <PackageReference Include="Force" Version="2.0.0-alpha3" />
 	</ItemGroup>

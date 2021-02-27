@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 namespace HightechAngular.Shop.Features.Index.Sale
 {
     public class GetSaleQueryHandler :
-        IQueryHandler<GetSaleContext, IEnumerable<SaleListItem>>
+        IQueryHandler<GetSale, IEnumerable<SaleListItem>>
     {
         private readonly IQueryable<Product> _products;
         public GetSaleQueryHandler(IQueryable<Product> products)
         {
             _products = products;
         }
-        public IEnumerable<SaleListItem> Handle(GetSaleContext input) =>
+        public IEnumerable<SaleListItem> Handle(GetSale input) =>
             _products
                 .Where(x => x.DiscountPercent > 0)
                 .ProjectToType<SaleListItem>()

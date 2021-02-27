@@ -1,5 +1,6 @@
 ﻿using Force.Cqrs;
 using HightechAngular.Orders.Entities;
+using HightechAngular.Shop.Features;
 using Infrastructure.Cqrs;
 using Infrastructure.OperationContext;
 using System;
@@ -10,15 +11,10 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Admin.Features.OrderManagement
 {
-    public class CompleteOrderAdminContext :
-        ByIntIdOperationContextBase<CompleteOrderAdmin>,
-        ICommand<Task<HandlerResult<OrderStatus>>>
+    public class CompleteOrderAdminContext : BaseOrderManagementStatusContext<CompleteOrderAdmin>
     {
-        [Required]
-        public Order Order { get; }
-        public CompleteOrderAdminContext(CompleteOrderAdmin request, Order order) : base(request)
+        public CompleteOrderAdminContext(CompleteOrderAdmin request, Order order) : base(request, order)
         {
-            Order = order;
         }
     }
 }

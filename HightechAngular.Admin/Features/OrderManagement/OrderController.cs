@@ -18,17 +18,13 @@ namespace HightechAngular.Admin.Features.OrderManagement
     {
         [HttpGet()]
         [ProducesResponseType(typeof(OrderListItem), StatusCodes.Status200OK)]
-        public IActionResult GetAll(
-            [FromServices] Func<GetAllOrders, GetAllOrdersContext> factory,
-            [FromQuery] GetAllOrders query) =>
-            this.Process(factory(query));
+        public IActionResult GetAll([FromQuery] GetAllOrders query) =>
+            this.Process(query);
 
         [HttpGet("GetOrders")]
         [ProducesResponseType(typeof(AllOrdersItem), StatusCodes.Status200OK)]
-        public IActionResult GetOrders(
-            [FromServices] Func<GetMyOrders, GetMyOrdersContext> factory,
-            [FromQuery] GetMyOrders query) =>
-            this.Process(factory(query));
+        public IActionResult GetOrders([FromQuery] GetMyOrders query) =>
+            this.Process(query);
 
         [HttpPut("PayOrder")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

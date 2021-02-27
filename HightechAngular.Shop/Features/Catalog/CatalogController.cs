@@ -9,20 +9,18 @@ using Mapster;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HightechAngular.Web.Features.Catalog
+namespace HightechAngular.Shop.Features.Catalog
 {
     public class CatalogController : ApiControllerBase
     {
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<ProductListItem>), StatusCodes.Status200OK)]
-        public IActionResult Get(
-            [FromServices] Func<GetProducts, GetProductsContext> factory,
-            [FromQuery] GetProducts query) =>
-            this.Process(factory(query));
+        public IActionResult Get([FromQuery] GetProducts query) =>
+            this.Process(query);
 
 
         [HttpGet("GetCategories")]
-        public IActionResult GetCategories([FromServices] Func<GetCategoriesQuery, GetCategoriesQueryContext> factory) =>
-            this.Process(factory(new GetCategoriesQuery()));
+        public IActionResult GetCategories() =>
+            this.Process(new GetCategoriesQuery());
     }
 }

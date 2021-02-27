@@ -15,10 +15,8 @@ namespace HightechAngular.Shop.Features.MyOrders
             this.Process(query);
 
         [HttpGet("GetMyOrders")]
-        public ActionResult<IEnumerable<MyOrdersListItem>> GetMyOrders(
-            [FromServices] Func<GetMyOrders, GetMyOrdersContext> factory,
-            [FromQuery] GetMyOrders query) =>
-            this.Process(factory(query));
+        public ActionResult<IEnumerable<MyOrdersListItem>> GetMyOrders([FromQuery] GetMyOrders query) =>
+            this.Process(query);
 
         [HttpPut("Dispute")]
         public async Task<IActionResult> Dispute(

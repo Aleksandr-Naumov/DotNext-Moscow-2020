@@ -10,15 +10,10 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Shop.Features.MyOrders
 {
-    public class PayMyOrderContext :
-        ByIntIdOperationContextBase<PayMyOrder>,
-        ICommand<Task<HandlerResult<OrderStatus>>>
+    public class PayMyOrderContext : BaseOrderManagementStatusContext<PayMyOrder>
     {
-        [Required]
-        public Order Order { get; }
-        public PayMyOrderContext(PayMyOrder request, Order order) : base(request)
+        public PayMyOrderContext(PayMyOrder request, Order order) : base(request, order)
         {
-            Order = order;
         }
     }
 }

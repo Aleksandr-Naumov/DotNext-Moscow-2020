@@ -1,14 +1,14 @@
 using HightechAngular.Orders.Entities;
 using HightechAngular.Orders.Services;
 using HightechAngular.Web.Features.Cart;
-using HightechAngular.Web.Features.Catalog;
 using HightechAngular.Web.Features.Index;
 using Infrastructure.SwaggerSchema.Dropdowns.Providers;
 using Microsoft.Extensions.DependencyInjection;
 using HightechAngular.Shop.Features;
-using HightechAngular.Shop.Features.Index.GetBestsellers;
+using HightechAngular.Shop.Features.Index.Bestsellers;
 using HightechAngular.Shop.Features.Index.NewArrivals;
 using HightechAngular.Shop.Features.Index.Sale;
+using HightechAngular.Shop.Features.Catalog;
 
 namespace HightechAngular.Shop
 {

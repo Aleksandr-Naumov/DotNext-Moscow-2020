@@ -6,7 +6,7 @@ using HightechAngular.Orders.Entities;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HightechAngular.Shop.Features.Index.GetBestsellers
+namespace HightechAngular.Shop.Features.Index.Bestsellers
 {
     public class BestsellersListItem: HasIdBase
     {

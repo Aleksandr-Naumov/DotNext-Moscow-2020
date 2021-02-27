@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace HightechAngular.Web.Features.OrderManagement
 {
     [UsedImplicitly]
-    public class GetAllOrdersHandler : GetIntEnumerableQueryHandlerBase<GetAllOrdersContext, Order, OrderListItem>
+    public class GetAllOrdersHandler : GetIntEnumerableQueryHandlerBase<GetAllOrders, Order, OrderListItem>
     {
         public GetAllOrdersHandler(IQueryable<Order> queryable) : base(queryable)
         {

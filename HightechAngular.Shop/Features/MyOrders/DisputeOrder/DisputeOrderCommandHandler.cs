@@ -11,16 +11,10 @@ namespace HightechAngular.Shop.Features.MyOrders
     public class DisputeOrderCommandHandler :
         ICommandHandler<DisputeOrderContext, Task<HandlerResult<OrderStatus>>>
     {
-        private readonly IQueryable<Order> _orders;
-        public DisputeOrderCommandHandler(IQueryable<Order> orders)
-        {
-            _orders = orders;
-        }
         public async Task<HandlerResult<OrderStatus>> Handle(DisputeOrderContext input)
         {
-            var order = _orders.First(x => x.Id == input.Order.Id);
             await Task.Delay(1000);
-            var result = order.BecomeDispute();
+            var result = input.Order.BecomeDispute();
             return new HandlerResult<OrderStatus>(result);
         }
     }

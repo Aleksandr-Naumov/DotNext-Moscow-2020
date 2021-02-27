@@ -12,19 +12,15 @@ namespace HightechAngular.Shop.Features.Cart
         ICommandHandler<AddProductCartContext, int>
     {
         private readonly ICartStorage _cartStorage;
-        private readonly IQueryable<Product> _products;
 
-        public AddProductCartCommandHandler(ICartStorage cartStorage,
-            IQueryable<Product> products)
+        public AddProductCartCommandHandler(ICartStorage cartStorage)
         {
             _cartStorage = cartStorage;
-            _products = products;
         }
 
         public int Handle(AddProductCartContext input)
         {
-            var product = _products.First(x => x.Id == input.Product.Id);
-            _cartStorage.Cart.AddProduct(product);
+            _cartStorage.Cart.AddProduct(input.Product);
             _cartStorage.SaveChanges();
             return input.Product.Id;
         }

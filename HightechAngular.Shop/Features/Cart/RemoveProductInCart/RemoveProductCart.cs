@@ -8,10 +8,7 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Shop.Features.Cart
 {
-    public class RemoveProductCart : IHasId<int>, ICommand<bool>
+    public class RemoveProductCart : HasIdBase, ICommand<bool>
     {
-        public int Id { get; set; }
-
-        object? IHasId.Id { get; }
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HightechAngular.Web.Features.Catalog
+namespace HightechAngular.Shop.Features.Catalog
 {
     public class CategoryListItem : HasNameBase
     {

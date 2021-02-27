@@ -4,7 +4,7 @@ using HightechAngular.Web.Features.Index;
 using Infrastructure.SwaggerSchema.Dropdowns;
 using Infrastructure.SwaggerSchema.Dropdowns.Providers;
 
-namespace HightechAngular.Shop.Features.Index.GetBestsellers
+namespace HightechAngular.Shop.Features.Index.Bestsellers
 {
     public class BestsellersDropdownProvider : IDropdownProvider<BestsellersListItem>
     {

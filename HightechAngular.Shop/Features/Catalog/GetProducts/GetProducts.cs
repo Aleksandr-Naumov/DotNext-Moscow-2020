@@ -3,7 +3,7 @@ using Force.Cqrs;
 using Force.Ddd;
 using HightechAngular.Shop.Features;
 
-namespace HightechAngular.Web.Features.Catalog
+namespace HightechAngular.Shop.Features.Catalog
 {
     public class GetProducts : FilterQuery<ProductListItem>, IHasId<int>
     {

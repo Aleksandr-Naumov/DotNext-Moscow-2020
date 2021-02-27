@@ -10,15 +10,10 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Shop.Features.Cart
 {
-    public class RemoveProductCartContext :
-        ByIntIdOperationContextBase<RemoveProductCart>,
-        ICommand<bool>
+    public class RemoveProductCartContext : BaseUpdateProductCartContext<RemoveProductCart, bool>
     {
-        [Required]
-        public Product Product { get; }
-        public RemoveProductCartContext(RemoveProductCart request, Product product) : base(request)
+        public RemoveProductCartContext(RemoveProductCart request, Product product) : base(request, product)
         {
-            Product = product;
         }
     }
 }

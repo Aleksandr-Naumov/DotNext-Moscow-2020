@@ -11,16 +11,10 @@ namespace HightechAngular.Shop.Features.MyOrders
     public class CompleteOrderCommandHandler :
         ICommandHandler<CompleteOrderContext, Task<HandlerResult<OrderStatus>>>
     {
-        private readonly IQueryable<Order> _orders;
-        public CompleteOrderCommandHandler(IQueryable<Order> orders)
-        {
-            _orders = orders;
-        }
         public async Task<HandlerResult<OrderStatus>> Handle(CompleteOrderContext input)
         {
-            var order = _orders.First(x => x.Id == input.Order.Id);
             await Task.Delay(1000);
-            var result = order.BecomeComplete();
+            var result = input.Order.BecomeComplete();
             return new HandlerResult<OrderStatus>(result);
         }
     }

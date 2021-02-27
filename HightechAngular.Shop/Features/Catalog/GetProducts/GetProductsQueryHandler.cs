@@ -7,19 +7,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HightechAngular.Web.Features.Catalog
+namespace HightechAngular.Shop.Features.Catalog
 {
     public class GetProductsQueryHandler :
-        IQueryHandler<GetProductsContext, IEnumerable<ProductListItem>>
+        IQueryHandler<GetProducts, IEnumerable<ProductListItem>>
     {
         private readonly IQueryable<Product> _products;
         public GetProductsQueryHandler(IQueryable<Product> products)
         {
             _products = products;
         }
-        public IEnumerable<ProductListItem> Handle(GetProductsContext input) =>
+        public IEnumerable<ProductListItem> Handle(GetProducts input) =>
             _products
-                .Where(x => x.Category.Id == input.Category.Id)
+                .Where(x => x.Category.Id == input.CategoryId)
                 .ProjectToType<ProductListItem>()
                 .ToList();
     }

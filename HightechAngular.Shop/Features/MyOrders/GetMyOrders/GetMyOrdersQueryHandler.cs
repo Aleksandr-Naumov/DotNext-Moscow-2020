@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace HightechAngular.Shop.Features.MyOrders
 {
     [UsedImplicitly]
-    public class GetMyOrdersQueryHandler : GetIntEnumerableQueryHandlerBase<GetMyOrdersContext, Order, MyOrdersListItem>
+    public class GetMyOrdersQueryHandler : GetIntEnumerableQueryHandlerBase<GetMyOrders, Order, MyOrdersListItem>
     {
         public GetMyOrdersQueryHandler(IQueryable<Order> queryable) : base(queryable) { }
     }

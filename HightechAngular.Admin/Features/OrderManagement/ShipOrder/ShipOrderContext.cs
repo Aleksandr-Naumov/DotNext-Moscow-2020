@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Admin.Features.OrderManagement
 {
-    public class ShipOrderContext : BaseOrderManagementStatusContext<ShipOrder>
+    public class ShipOrderContext : BaseOrderStatusContext<ShipOrder>
     {
         public ShipOrderContext(ShipOrder request, Order order) : base(request, order)
         {

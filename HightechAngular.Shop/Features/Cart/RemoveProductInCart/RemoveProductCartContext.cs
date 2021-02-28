@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Shop.Features.Cart
 {
-    public class RemoveProductCartContext : BaseUpdateProductCartContext<RemoveProductCart, bool>
+    public class RemoveProductCartContext : BaseUpdateProductInCartContext<RemoveProductCart, bool>
     {
         public RemoveProductCartContext(RemoveProductCart request, Product product) : base(request, product)
         {

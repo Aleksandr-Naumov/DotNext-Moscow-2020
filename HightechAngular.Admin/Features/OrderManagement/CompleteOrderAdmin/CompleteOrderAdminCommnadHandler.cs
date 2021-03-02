@@ -15,8 +15,8 @@ namespace HightechAngular.Admin.Features.OrderManagement
         public async Task<HandlerResult<OrderStatus>> Handle(CompleteOrderAdminContext input)
         {
             await Task.Delay(1000);
-            var result = input.Order.BecomeComplete();
-            return new HandlerResult<OrderStatus>(result);
+            var result = new Order.Complete(input.Order);
+            return new HandlerResult<OrderStatus>(result.OrderStatus);
         }
     }
 }

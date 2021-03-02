@@ -12,7 +12,7 @@ using Infrastructure.Ddd.Domain.State;
 namespace HightechAngular.Orders.Entities
 {
     // ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
-    public class Order : IntEntityBase
+    public partial class Order : IntEntityBase
     {
         public static readonly OrderSpecs Specs = new OrderSpecs();
 
@@ -32,28 +32,6 @@ namespace HightechAngular.Orders.Entities
             Total = _orderItems.Select(x => x.Price).Sum();
             Status = OrderStatus.New;
             this.EnsureInvariant();
-        }
-        public OrderStatus BecomePaid()
-        {
-            Status = OrderStatus.Paid;
-            return Status;
-        }
-        public OrderStatus BecomeShipped()
-        {
-            Status = OrderStatus.Shipped;
-            return Status;
-        }
-
-        public OrderStatus BecomeDispute()
-        {
-            Status = OrderStatus.Dispute;
-            return Status;
-        }
-
-        public OrderStatus BecomeComplete()
-        {
-            Status = OrderStatus.Complete;
-            return Status;
         }
 
         [Required]

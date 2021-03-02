@@ -15,8 +15,8 @@ namespace HightechAngular.Admin.Features.OrderManagement
         public async Task<HandlerResult<OrderStatus>> Handle(ShipOrderContext input)
         {
             await Task.Delay(1000);
-            var result = new Order.Shipped(input.Order);
-            return new HandlerResult<OrderStatus>(result.OrderStatus);
+            var result = new Order.Shipped(input.Order).GetStateOrder(OrderStatus.Shipped);
+            return new HandlerResult<OrderStatus>(result);
         }
     }
 }

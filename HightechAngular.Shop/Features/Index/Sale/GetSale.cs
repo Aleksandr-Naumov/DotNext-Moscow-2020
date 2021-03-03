@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Shop.Features.Index.Sale
 {
-    public class GetSale : FilterQuery<SaleListItem>, IHasId<int>
+    public class GetSale : FilterQuery<SaleListItem>
     {
-        public int Id { get; set; }
-
-        object? IHasId.Id { get; }
         public override IOrderedQueryable<SaleListItem> Sort(IQueryable<SaleListItem> queryable)
         {
             if (Order == "dateCreated")

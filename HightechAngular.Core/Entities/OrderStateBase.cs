@@ -9,7 +9,6 @@ namespace HightechAngular.Orders.Entities
         {
             [Required]
             public Order Order { get; }
-            public OrderStatus OrderStatus { get; set; }
             public OrderStateBase(Order order)
             {
                 Order = order;
@@ -18,11 +17,11 @@ namespace HightechAngular.Orders.Entities
             {
                 return status switch
                 {
-                    OrderStatus.New => Order.Status = OrderStatus.New,
-                    OrderStatus.Paid => Order.Status = OrderStatus.Paid,
-                    OrderStatus.Shipped => Order.Status = OrderStatus.Shipped,
-                    OrderStatus.Dispute => Order.Status = OrderStatus.Dispute,
-                    OrderStatus.Complete => Order.Status = OrderStatus.Complete,
+                    OrderStatus.New => Order.Status = status,
+                    OrderStatus.Paid => Order.Status = status,
+                    OrderStatus.Shipped => Order.Status = status,
+                    OrderStatus.Dispute => Order.Status = status,
+                    OrderStatus.Complete => Order.Status = status,
                     _ => throw new NotImplementedException()
                 };
             }
@@ -38,8 +37,7 @@ namespace HightechAngular.Orders.Entities
             }
             public OrderStatus BecomePaid()
             {
-                Order.Status = OrderStatus.Paid;
-                return Order.Status;
+                return GetStateOrder(OrderStatus.Paid);
             }
         }
         public class Paid : OrderStateBase

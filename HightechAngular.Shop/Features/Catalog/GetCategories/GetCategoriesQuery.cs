@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Shop.Features.Catalog
 {
-    public class GetCategoriesQuery : IQuery<IEnumerable<CategoryListItem>>, IHasId<int>
+    public class GetCategoriesQuery : IQuery<IEnumerable<CategoryListItem>>
     {
-        public int Id { get; set; }
-
-        object? IHasId.Id { get; }
     }
 }

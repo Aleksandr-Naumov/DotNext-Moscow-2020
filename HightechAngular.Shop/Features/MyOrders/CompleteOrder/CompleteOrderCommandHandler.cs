@@ -14,7 +14,7 @@ namespace HightechAngular.Shop.Features.MyOrders
         public async Task<HandlerResult<OrderStatus>> Handle(CompleteOrderContext input)
         {
             await Task.Delay(1000);
-            var result = new Order.Complete(input.Order).GetStateOrder(OrderStatus.Complete);
+            var result = new Order.Shipped(input.Order).BecomeComplete();
             return new HandlerResult<OrderStatus>(result);
         }
     }

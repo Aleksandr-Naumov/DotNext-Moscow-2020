@@ -25,7 +25,7 @@ namespace HightechAngular.Shop.Features.MyOrders
             await Task.Delay(1000);
             var result = new Order.New(input.Order).BecomePaid();
             _unitOfWork.Commit();
-            return new HandlerResult<OrderStatus>(result);
+            return new HandlerResult<OrderStatus>(result.Order.Status);
         }
     }
 }

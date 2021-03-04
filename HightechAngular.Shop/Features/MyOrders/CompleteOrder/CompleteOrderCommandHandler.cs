@@ -15,7 +15,7 @@ namespace HightechAngular.Shop.Features.MyOrders
         {
             await Task.Delay(1000);
             var result = new Order.Shipped(input.Order).BecomeComplete();
-            return new HandlerResult<OrderStatus>(result);
+            return new HandlerResult<OrderStatus>(result.Order.Status);
         }
     }
 }

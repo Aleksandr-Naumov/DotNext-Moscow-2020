@@ -13,15 +13,15 @@ namespace HightechAngular.Orders.Entities
             {
                 Order = order;
             }
-            public OrderStatus GetStateOrder(OrderStatus status)
+            public OrderStateBase GetStateOrder(OrderStatus status)
             {
                 return status switch
                 {
-                    OrderStatus.New => Order.Status = status,
-                    OrderStatus.Paid => Order.Status = status,
-                    OrderStatus.Shipped => Order.Status = status,
-                    OrderStatus.Dispute => Order.Status = status,
-                    OrderStatus.Complete => Order.Status = status,
+                    OrderStatus.New => new New(Order),
+                    OrderStatus.Paid => new Paid(Order),
+                    OrderStatus.Shipped => new Shipped(Order),
+                    OrderStatus.Dispute => new Disputed(Order),
+                    OrderStatus.Complete => new Complete(Order),
                     _ => throw new NotImplementedException()
                 };
             }
@@ -35,9 +35,10 @@ namespace HightechAngular.Orders.Entities
                     throw new ArgumentException();
                 }
             }
-            public OrderStatus BecomePaid()
+            public Paid BecomePaid()
             {
-                return GetStateOrder(OrderStatus.Paid);
+                Order.Status = OrderStatus.Paid;
+                return (Paid)GetStateOrder(Order.Status);
             }
         }
         public class Paid : OrderStateBase
@@ -49,9 +50,10 @@ namespace HightechAngular.Orders.Entities
                     throw new ArgumentException();
                 }
             }
-            public OrderStatus BecomeShipped()
+            public Shipped BecomeShipped()
             {
-                return GetStateOrder(OrderStatus.Shipped);
+                Order.Status = OrderStatus.Shipped;
+                return (Shipped)GetStateOrder(Order.Status);
             }
         }
         public class Shipped : OrderStateBase
@@ -63,13 +65,15 @@ namespace HightechAngular.Orders.Entities
                     throw new ArgumentException();
                 }
             }
-            public OrderStatus BecomeDispute()
+            public Disputed BecomeDispute()
             {
-                return GetStateOrder(OrderStatus.Dispute);
+                Order.Status = OrderStatus.Dispute;
+                return (Disputed)GetStateOrder(Order.Status);
             }
-            public OrderStatus BecomeComplete()
+            public Complete BecomeComplete()
             {
-                return GetStateOrder(OrderStatus.Complete);
+                Order.Status = OrderStatus.Complete;
+                return (Complete)GetStateOrder(Order.Status);
             }
         }
         public class Disputed : OrderStateBase
@@ -81,9 +85,10 @@ namespace HightechAngular.Orders.Entities
                     throw new ArgumentException();
                 }
             }
-            public OrderStatus BecomeComplete()
+            public Complete BecomeComplete()
             {
-                return GetStateOrder(OrderStatus.Complete);
+                Order.Status = OrderStatus.Complete;
+                return (Complete)GetStateOrder(Order.Status);
             }
         }
         public class Complete : OrderStateBase

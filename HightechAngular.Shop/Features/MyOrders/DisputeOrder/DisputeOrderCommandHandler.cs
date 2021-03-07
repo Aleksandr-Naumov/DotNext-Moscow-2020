@@ -14,8 +14,8 @@ namespace HightechAngular.Shop.Features.MyOrders
         public async Task<HandlerResult<OrderStatus>> Handle(DisputeOrderContext input)
         {
             await Task.Delay(1000);
-            var result = new Order.Shipped(input.Order).BecomeDispute();
-            return new HandlerResult<OrderStatus>(result.Order.Status);
+            var result = new Order.Shipped(input.Order).BecomeDisputed();
+            return new HandlerResult<OrderStatus>(result.EligibleStatus);
         }
     }
 }

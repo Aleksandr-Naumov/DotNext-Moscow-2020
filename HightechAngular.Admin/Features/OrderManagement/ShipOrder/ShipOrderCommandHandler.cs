@@ -16,7 +16,7 @@ namespace HightechAngular.Admin.Features.OrderManagement
         {
             await Task.Delay(1000);
             var result = new Order.Paid(input.Order).BecomeShipped();
-            return new HandlerResult<OrderStatus>(result.Order.Status);
+            return new HandlerResult<OrderStatus>(result.EligibleStatus);
         }
     }
 }

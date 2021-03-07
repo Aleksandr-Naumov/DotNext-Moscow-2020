@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Shop.Features.MyOrders
 {
-    public class PayMyOrderContext : BaseOrderStatusContext<PayMyOrder>
+    public class PayMyOrderContext : OrderStatusContextBase<PayMyOrder>
     {
         public PayMyOrderContext(PayMyOrder request, Order order) : base(request, order)
         {

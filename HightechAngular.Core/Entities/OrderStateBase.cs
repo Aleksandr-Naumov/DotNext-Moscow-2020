@@ -1,105 +1,87 @@
-﻿using System;
+﻿using Infrastructure.Ddd.Domain.State;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace HightechAngular.Orders.Entities
 {
     public partial class Order
     {
-        public abstract class OrderStateBase
+        public abstract class OrderStateBase : SingleStateBase<Order, OrderStatus>
         {
-            [Required]
-            public Order Order { get; }
-            public OrderStateBase(Order order)
+            protected OrderStateBase(Order entity) : base(entity)
             {
-                Order = order;
-            }
-            public OrderStateBase GetStateOrder(OrderStatus status)
-            {
-                return status switch
-                {
-                    OrderStatus.New => new New(Order),
-                    OrderStatus.Paid => new Paid(Order),
-                    OrderStatus.Shipped => new Shipped(Order),
-                    OrderStatus.Dispute => new Disputed(Order),
-                    OrderStatus.Complete => new Complete(Order),
-                    _ => throw new NotImplementedException()
-                };
             }
         }
+
+
         public class New : OrderStateBase
         {
-            public New(Order order) : base(order)
+            public New(Order entity) : base(entity)
             {
-                if (order.Status != OrderStatus.New)
-                {
-                    throw new ArgumentException();
-                }
             }
+
+            public override OrderStatus EligibleStatus => OrderStatus.New;
+
             public Paid BecomePaid()
             {
-                Order.Status = OrderStatus.Paid;
-                return (Paid)GetStateOrder(Order.Status);
+                return Entity.To<Paid>(OrderStatus.Paid);
             }
         }
+
         public class Paid : OrderStateBase
         {
-            public Paid(Order order) : base(order)
+            public Paid(Order entity) : base(entity)
             {
-                if (order.Status != OrderStatus.Paid)
-                {
-                    throw new ArgumentException();
-                }
             }
+
             public Shipped BecomeShipped()
             {
-                Order.Status = OrderStatus.Shipped;
-                return (Shipped)GetStateOrder(Order.Status);
+                return Entity.To<Shipped>(OrderStatus.Shipped);
             }
+
+            public override OrderStatus EligibleStatus => OrderStatus.Paid;
         }
+
         public class Shipped : OrderStateBase
         {
-            public Shipped(Order order) : base(order)
+            public Shipped(Order entity) : base(entity)
             {
-                if (order.Status != OrderStatus.Shipped)
-                {
-                    throw new ArgumentException();
-                }
             }
-            public Disputed BecomeDispute()
+
+            public Disputed BecomeDisputed()
             {
-                Order.Status = OrderStatus.Dispute;
-                return (Disputed)GetStateOrder(Order.Status);
+                return Entity.To<Disputed>(OrderStatus.Dispute);
             }
+
             public Complete BecomeComplete()
             {
-                Order.Status = OrderStatus.Complete;
-                return (Complete)GetStateOrder(Order.Status);
+                return Entity.To<Complete>(OrderStatus.Complete);
             }
+
+            public override OrderStatus EligibleStatus => OrderStatus.Shipped;
         }
+
         public class Disputed : OrderStateBase
         {
-            public Disputed(Order order) : base(order)
+            public Disputed(Order entity) : base(entity)
             {
-                if (order.Status != OrderStatus.Dispute)
-                {
-                    throw new ArgumentException();
-                }
             }
+
             public Complete BecomeComplete()
             {
-                Order.Status = OrderStatus.Complete;
-                return (Complete)GetStateOrder(Order.Status);
+                return Entity.To<Complete>(OrderStatus.Complete);
             }
+
+            public override OrderStatus EligibleStatus => OrderStatus.Dispute;
         }
+
         public class Complete : OrderStateBase
         {
-            public Complete(Order order) : base(order)
+            public Complete(Order entity) : base(entity)
             {
-                if (order.Status != OrderStatus.Complete)
-                {
-                    throw new ArgumentException();
-                }
             }
+
+            public override OrderStatus EligibleStatus => OrderStatus.Complete;
         }
     }
 }

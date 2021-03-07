@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Admin.Features.OrderManagement
 {
-    public class CompleteOrderAdminContext : BaseOrderStatusContext<CompleteOrderAdmin>
+    public class CompleteOrderAdminContext : OrderStatusContextBase<CompleteOrderAdmin>
     {
         public CompleteOrderAdminContext(CompleteOrderAdmin request, Order order) : base(request, order)
         {

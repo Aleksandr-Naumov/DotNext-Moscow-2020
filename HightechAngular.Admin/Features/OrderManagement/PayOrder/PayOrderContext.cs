@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Admin.Features.OrderManagement
 {
-    public class PayOrderContext : BaseOrderStatusContext<PayOrder>
+    public class PayOrderContext : OrderStatusContextBase<PayOrder>
     {
         public PayOrderContext(PayOrder request, Order order) : base(request, order)
         {

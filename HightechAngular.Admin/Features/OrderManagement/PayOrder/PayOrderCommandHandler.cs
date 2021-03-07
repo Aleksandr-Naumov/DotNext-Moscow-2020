@@ -3,6 +3,7 @@ using Force.Cqrs;
 using HightechAngular.Admin.Features.OrderManagement;
 using HightechAngular.Orders.Entities;
 using Infrastructure.Cqrs;
+using Infrastructure.Workflow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,14 @@ namespace HightechAngular.Admin.Features.OrderManagement
         public async Task<HandlerResult<OrderStatus>> Handle(PayOrderContext input)
         {
             await Task.Delay(1000);
-            var result = new Order.New(input.Order).BecomePaid();
+            var result = input.Order.With((Order.New newOrder) => newOrder.BecomePaid());
+            if (result == null)
+            {
+                return FailureInfo.Invalid("Order is in invalid state");
+            }
+
             _unitOfWork.Commit();
-            return new HandlerResult<OrderStatus>(result.EligibleStatus);
+            return result.EligibleStatus;
         }
     }
 }

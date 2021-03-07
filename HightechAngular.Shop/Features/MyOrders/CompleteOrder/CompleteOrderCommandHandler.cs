@@ -1,6 +1,7 @@
 ﻿using Force.Cqrs;
 using HightechAngular.Orders.Entities;
 using Infrastructure.Cqrs;
+using Infrastructure.Workflow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,13 @@ namespace HightechAngular.Shop.Features.MyOrders
         public async Task<HandlerResult<OrderStatus>> Handle(CompleteOrderContext input)
         {
             await Task.Delay(1000);
-            var result = new Order.Shipped(input.Order).BecomeComplete();
-            return new HandlerResult<OrderStatus>(result.EligibleStatus);
+            var result = input.Order.With((Order.Shipped newOrder) => newOrder.BecomeComplete());
+            if (result == null)
+            {
+                return FailureInfo.Invalid("Order is in invalid state");
+            }
+
+            return result.EligibleStatus;
         }
     }
 }

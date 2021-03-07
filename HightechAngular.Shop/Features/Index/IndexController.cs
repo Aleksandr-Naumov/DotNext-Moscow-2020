@@ -1,8 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Force.Cqrs;
 using HightechAngular.Orders.Entities;
-using HightechAngular.Web.Dto;
+using HightechAngular.Shop.Features.Index;
+using HightechAngular.Shop.Features.Index.Bestsellers;
+using HightechAngular.Shop.Features.Index.NewArrivals;
+using HightechAngular.Shop.Features.Index.Sale;
 using HightechAngular.Web.Features.Index.GetBestSellers;
 using Infrastructure.AspNetCore;
 using Mapster;

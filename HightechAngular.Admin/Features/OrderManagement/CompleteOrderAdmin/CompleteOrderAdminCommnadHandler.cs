@@ -7,21 +7,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HightechAngular.Web.Features.Admin
+namespace HightechAngular.Admin.Features.OrderManagement
 {
     public class CompleteOrderAdminCommnadHandler :
-        ICommandHandler<CompleteOrderAdmin, Task<HandlerResult<OrderStatus>>>
+        ICommandHandler<CompleteOrderAdminContext, Task<HandlerResult<OrderStatus>>>
     {
-        private readonly IQueryable<Order> _orders;
-        public CompleteOrderAdminCommnadHandler(IQueryable<Order> orders)
+        public async Task<HandlerResult<OrderStatus>> Handle(CompleteOrderAdminContext input)
         {
-            _orders = orders;
-        }
-        public async Task<HandlerResult<OrderStatus>> Handle(CompleteOrderAdmin input)
-        {
-            var order = _orders.First(x => x.Id == input.OrderId);
             await Task.Delay(1000);
-            var result = order.BecomeComplete();
+            var result = input.Order.BecomeComplete();
             return new HandlerResult<OrderStatus>(result);
         }
     }

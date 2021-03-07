@@ -1,14 +1,16 @@
 using System.Linq;
 using Force.Cqrs;
+using Force.Ddd;
 using HightechAngular.Shop.Features;
 
-namespace HightechAngular.Web.Features.Catalog
+namespace HightechAngular.Shop.Features.Catalog
 {
-    public class GetProducts: FilterQuery<ProductListItem>
+    public class GetProducts : FilterQuery<ProductListItem>
     {
-        public string[] Name { get; set; }
-        public double[] Price { get; set; }
+        public string[]? Name { get; set; }
+        public double[]? Price { get; set; }
         public int CategoryId { get; set; }
+
         public GetProducts()
         {
             Order = "Id";

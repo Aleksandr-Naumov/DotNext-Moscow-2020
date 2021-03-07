@@ -1,15 +1,14 @@
 ﻿using Force.Cqrs;
+using Force.Ddd;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HightechAngular.Web.Features.Cart
+namespace HightechAngular.Shop.Features.Cart
 {
-    public class RemoveProductCart : ICommand<bool>
+    public class RemoveProductCart : HasIdBase, ICommand<bool>
     {
-        [Range(1, int.MaxValue)]
-        public int ProductId { get; set; }
     }
 }

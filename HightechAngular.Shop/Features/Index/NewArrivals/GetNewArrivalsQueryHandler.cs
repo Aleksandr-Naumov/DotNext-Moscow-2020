@@ -1,13 +1,12 @@
 ﻿using Force.Cqrs;
 using HightechAngular.Orders.Entities;
-using HightechAngular.Web.Dto;
 using Mapster;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HightechAngular.Web.Features.Index.NewArrivals
+namespace HightechAngular.Shop.Features.Index.NewArrivals
 {
     public class GetNewArrivalsQueryHandler :
         IQueryHandler<GetNewArrivals, IEnumerable<NewArrivalsListItem>>

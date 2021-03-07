@@ -1,6 +1,6 @@
 ﻿using Force.Cqrs;
 using HightechAngular.Orders.Entities;
-using HightechAngular.Web.Features.Index;
+using HightechAngular.Shop.Features.Index.Bestsellers;
 using Mapster;
 using System;
 using System.Collections.Generic;

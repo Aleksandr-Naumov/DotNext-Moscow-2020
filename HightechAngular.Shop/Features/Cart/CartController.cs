@@ -9,7 +9,7 @@ using HightechAngular.Orders.Services;
 using Infrastructure.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HightechAngular.Web.Features.Cart
+namespace HightechAngular.Shop.Features.Cart
 {
     public class CartController : ApiControllerBase
     {
@@ -19,11 +19,15 @@ namespace HightechAngular.Web.Features.Cart
 
         [HttpPut("Add")]
         [ProducesResponseType((int)HttpStatusCode.Created)]
-        public IActionResult Add([FromBody] int productId) =>
-            this.Process(new AddProductCart() { ProductId = productId });
+        public IActionResult Add(
+            [FromServices] Func<AddProductCart, AddProductCartContext> factory,
+            [FromBody] int productId) =>
+            this.Process(factory(new AddProductCart() { Id = productId }));
 
         [HttpPut("Remove")]
-        public ActionResult<bool> Remove([FromBody] int productId) =>
-            this.Process(new RemoveProductCart() { ProductId = productId });
+        public ActionResult<bool> Remove(
+            [FromServices] Func<RemoveProductCart, RemoveProductCartContext> factory,
+            [FromBody] int productId) =>
+            this.Process(factory(new RemoveProductCart() { Id = productId }));
     }
 }

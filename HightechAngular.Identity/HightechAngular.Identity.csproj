@@ -4,6 +4,7 @@
 		<OutputType>Library</OutputType>
 		<RootNamespace>HightechAngular.Identity</RootNamespace>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>

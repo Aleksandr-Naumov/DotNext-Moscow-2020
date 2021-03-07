@@ -4,7 +4,8 @@ namespace HightechAngular.Orders.Entities
 {
     public class ProductSpecs
     {
-        public ProductSpecs()
+        public static readonly ProductSpecs Instance = new ProductSpecs();
+        private ProductSpecs()
         {
             IsBestseller = IsForSale && new Spec<Product>(x => x.PurchaseCount > 10);
         }

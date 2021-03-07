@@ -1,10 +1,9 @@
 ﻿using Force.Cqrs;
-using HightechAngular.Web.Features.MyOrders;
+using Force.Ddd;
 
 namespace HightechAngular.Admin.Features.OrderManagement
 {
     public class GetAllOrders : FilterQuery<OrderListItem>
     {
-        
     }
 }

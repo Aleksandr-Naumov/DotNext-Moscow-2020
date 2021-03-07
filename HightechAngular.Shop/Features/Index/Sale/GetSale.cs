@@ -1,10 +1,11 @@
 ﻿using Force.Cqrs;
+using Force.Ddd;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HightechAngular.Web.Dto
+namespace HightechAngular.Shop.Features.Index.Sale
 {
     public class GetSale : FilterQuery<SaleListItem>
     {

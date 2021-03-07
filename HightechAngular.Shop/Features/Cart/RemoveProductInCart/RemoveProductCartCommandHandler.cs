@@ -6,9 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HightechAngular.Web.Features.Cart.RemoveProductInCart
+namespace HightechAngular.Shop.Features.Cart
 {
-    public class RemoveProductCartCommandHandler : ICommandHandler<RemoveProductCart, bool>
+    public class RemoveProductCartCommandHandler : 
+        ICommandHandler<RemoveProductCartContext, bool>
     {
         private readonly ICartStorage _cartStorage;
 
@@ -16,9 +17,9 @@ namespace HightechAngular.Web.Features.Cart.RemoveProductInCart
         {
             _cartStorage = cartStorage;
         }
-        public bool Handle(RemoveProductCart input)
+        public bool Handle(RemoveProductCartContext input)
         {
-            var res = _cartStorage.Cart.TryRemoveProduct(input.ProductId);
+            var res = _cartStorage.Cart.TryRemoveProduct(input.Product.Id);
             _cartStorage.SaveChanges();
             return res;
         }

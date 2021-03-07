@@ -11,7 +11,7 @@ namespace HightechAngular.Orders.Entities
 {
     public class Product : IntEntityBase
     {
-        public static readonly ProductSpecs Specs = new ProductSpecs();
+        public static readonly ProductSpecs Specs = ProductSpecs.Instance;
 
         protected Product()
         {
@@ -27,7 +27,8 @@ namespace HightechAngular.Orders.Entities
             this.EnsureInvariant();
         }
 
-        [Required] public string Name { get; protected set; }
+        [Required]
+        public string Name { get; protected set; } = default!;
 
         public double Price { get; protected set; }
 
@@ -35,7 +36,7 @@ namespace HightechAngular.Orders.Entities
 
         public DateTime DateCreated { get; protected set; } = DateTime.UtcNow;
 
-        public virtual Category Category { get; protected set; }
+        public virtual Category Category { get; protected set; } = default!;
 
         public int PurchaseCount { get; set; }
 

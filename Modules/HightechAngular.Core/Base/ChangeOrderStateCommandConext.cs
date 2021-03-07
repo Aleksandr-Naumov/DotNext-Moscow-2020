@@ -7,14 +7,14 @@ using Infrastructure.OperationContext;
 
 namespace HightechAngular.Orders.Base
 {
-    public class ChangeOrderStateConext<TCommand, TState> :
+    public class ChangeOrderStateContext<TCommand, TState> :
         OperationContextBase<TCommand>,
         IHasOrderState<TState>,
         ICommand<Task<CommandResult<OrderStatus>>>
         where TCommand : class, IHasOrderId
         where TState : Order.OrderStateBase
     {
-        public ChangeOrderStateConext(TCommand request, Order order) : base(request)
+        public ChangeOrderStateContext(TCommand request, Order order) : base(request)
         {
             Order = order;
         }

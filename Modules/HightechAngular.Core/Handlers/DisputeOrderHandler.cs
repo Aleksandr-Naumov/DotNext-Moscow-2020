@@ -15,18 +15,18 @@ namespace HightechAngular.Orders.Handlers
         public DisputeOrderHandler(IUnitOfWork unitOfWork, ILogger<DisputeOrder> logger) : base(unitOfWork, logger) { }
 
 
-        protected override Order.Disputed ChangeState(ChangeOrderStateConext<DisputeOrder, Order.Shipped> input)
+        protected override Order.Disputed ChangeState(ChangeOrderStateContext<DisputeOrder, Order.Shipped> input)
         {
             return input.State.BecomeDisputed(input.Request.Complaint);
         }
 
         protected override async Task ChangeStateInRemoteSystem(
-            ChangeOrderStateConext<DisputeOrder, Order.Shipped> input)
+            ChangeOrderStateContext<DisputeOrder, Order.Shipped> input)
         {
             await Task.Delay(300); // Imitate API Request
         }
 
-        protected override async Task RollbackRemoteSystem(ChangeOrderStateConext<DisputeOrder, Order.Shipped> input,
+        protected override async Task RollbackRemoteSystem(ChangeOrderStateContext<DisputeOrder, Order.Shipped> input,
             DbException e)
         {
             await Task.Delay(300); // Imitate API Request

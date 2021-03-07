@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 namespace HightechAngular.Orders.Base
 {
     public abstract class ChangeOrderStateHandlerBase<TCommand, TFrom, TTo> :
-        IHandler<ChangeOrderStateConext<TCommand, TFrom>, Task<CommandResult<TTo>>>
+        IHandler<ChangeOrderStateContext<TCommand, TFrom>, Task<CommandResult<TTo>>>
         where TCommand : class, IHasOrderId
         where TFrom : Order.OrderStateBase
         where TTo : Order.OrderStateBase
@@ -25,7 +25,7 @@ namespace HightechAngular.Orders.Base
             _logger = logger;
         }
 
-        public async Task<CommandResult<TTo>> Handle(ChangeOrderStateConext<TCommand, TFrom> input)
+        public async Task<CommandResult<TTo>> Handle(ChangeOrderStateContext<TCommand, TFrom> input)
         {
             using var tr = _unitOfWork.BeginTransaction();
             try
@@ -52,7 +52,7 @@ namespace HightechAngular.Orders.Base
             }
         }
 
-        private async Task<Exception> DoRollbackRemoteSystem(ChangeOrderStateConext<TCommand, TFrom> input,
+        private async Task<Exception> DoRollbackRemoteSystem(ChangeOrderStateContext<TCommand, TFrom> input,
             DbException originalException)
         {
             try
@@ -68,10 +68,10 @@ namespace HightechAngular.Orders.Base
             }
         }
 
-        protected abstract TTo ChangeState(ChangeOrderStateConext<TCommand, TFrom> input);
+        protected abstract TTo ChangeState(ChangeOrderStateContext<TCommand, TFrom> input);
 
-        protected abstract Task ChangeStateInRemoteSystem(ChangeOrderStateConext<TCommand, TFrom> input);
+        protected abstract Task ChangeStateInRemoteSystem(ChangeOrderStateContext<TCommand, TFrom> input);
 
-        protected abstract Task RollbackRemoteSystem(ChangeOrderStateConext<TCommand, TFrom> input, DbException e);
+        protected abstract Task RollbackRemoteSystem(ChangeOrderStateContext<TCommand, TFrom> input, DbException e);
     }
 }

@@ -20,11 +20,11 @@ namespace HightechAngular.Orders
             where TCommand : class, ICommand<Task<CommandResult<OrderStatus>>>, IHasOrderId
         {
             services.AddScoped<
-                ICommandHandler<ChangeOrderStateConext<TCommand, TFrom>, Task<CommandResult<OrderStatus>>>,
+                ICommandHandler<ChangeOrderStateContext<TCommand, TFrom>, Task<CommandResult<OrderStatus>>>,
                 ChangeOrderStateCommandHandler<TCommand, TFrom, TTo>>();
 
-            var funcType = typeof(Func<TCommand, ChangeOrderStateConext<TCommand, TFrom>>);
-            var factoryType = typeof(OperationContextFactory<TCommand, ChangeOrderStateConext<TCommand, TFrom>>);
+            var funcType = typeof(Func<TCommand, ChangeOrderStateContext<TCommand, TFrom>>);
+            var factoryType = typeof(OperationContextFactory<TCommand, ChangeOrderStateContext<TCommand, TFrom>>);
             
             services.AddScoped(factoryType);
             services.AddScoped(funcType, sp => ((dynamic) sp.GetService(factoryType)).BuildFunc(sp) );

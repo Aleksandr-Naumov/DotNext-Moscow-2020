@@ -9,10 +9,10 @@ using Infrastructure.Cqrs;
 namespace HightechAngular.Admin.Features.OrderManagement
 {
     public class CompleteOrderByAdminCommandHandler: ICommandHandler<
-        ChangeOrderStateConext<CompleteOrderByAdmin, Order.Shipped>,
+        ChangeOrderStateContext<CompleteOrderByAdmin, Order.Shipped>,
         Task<CommandResult<OrderStatus>>>
     {
-        private readonly IHandler<ChangeOrderStateConext<
+        private readonly IHandler<ChangeOrderStateContext<
                 CompleteOrderByAdmin, Order.Shipped>, 
                 Task<CommandResult<Order.OrderStateBase>>> _handler;
 
@@ -20,7 +20,7 @@ namespace HightechAngular.Admin.Features.OrderManagement
 
         public CompleteOrderByAdminCommandHandler(
             IHandler<
-                ChangeOrderStateConext<CompleteOrderByAdmin,  Order.Shipped>, 
+                ChangeOrderStateContext<CompleteOrderByAdmin,  Order.Shipped>, 
                 Task<CommandResult<Order.OrderStateBase>>> handler,
             IUserContext userContext)
         {
@@ -29,7 +29,7 @@ namespace HightechAngular.Admin.Features.OrderManagement
         }
 
 
-        public async Task<CommandResult<OrderStatus>> Handle(ChangeOrderStateConext<CompleteOrderByAdmin, Order.Shipped> input)
+        public async Task<CommandResult<OrderStatus>> Handle(ChangeOrderStateContext<CompleteOrderByAdmin, Order.Shipped> input)
         {
             // TODO: error handling
             var res = await _handler.Handle(input).MapAsync(x => x.EligibleStatus);

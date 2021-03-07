@@ -14,7 +14,7 @@ namespace HightechAngular.Orders.Handlers
             base(unitOfWork, logger) { }
 
         protected override Order.Complete ChangeState(
-            ChangeOrderStateConext<ResolveDisputedOrder, Order.Disputed> input)
+            ChangeOrderStateContext<ResolveDisputedOrder, Order.Disputed> input)
         {
             return input.State.Resolve(input.Request.ResolutionComment);
         }

@@ -20,14 +20,14 @@ namespace HightechAngular.Admin.Features.OrderManagement
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> PayOrder(
             [FromBody] PayOrder command,
-            [FromServices] Func<PayOrder, ChangeOrderStateConext<PayOrder, Order.New>> factory) =>
+            [FromServices] Func<PayOrder, ChangeOrderStateContext<PayOrder, Order.New>> factory) =>
             await this.ProcessAsync(factory(command));
 
 
         [HttpPut("Ship")]
         public async Task<IActionResult> Ship(
             [FromBody] ShipOrder command,
-            [FromServices] Func<ShipOrder, ChangeOrderStateConext<ShipOrder, Order.Paid>> factory) =>
+            [FromServices] Func<ShipOrder, ChangeOrderStateContext<ShipOrder, Order.Paid>> factory) =>
             await this.ProcessAsync(factory(command));
 
         [HttpPut("Resolve")]
@@ -35,7 +35,7 @@ namespace HightechAngular.Admin.Features.OrderManagement
             [FromBody] ResolveDisputedOrder command,
             [FromServices] Func<
                 ResolveDisputedOrder,
-                ChangeOrderStateConext<ResolveDisputedOrder, Order.Disputed>> factory) => 
+                ChangeOrderStateContext<ResolveDisputedOrder, Order.Disputed>> factory) => 
             await this.ProcessAsync(factory(command));
     }
 }

@@ -24,7 +24,7 @@ namespace HightechAngular.Shop.Features.MyOrders
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> PayOrder(
             [FromBody] PayOrder command,
-            [FromServices] Func<PayOrder, ChangeOrderStateConext<PayOrder, Order.New>> factory)
+            [FromServices] Func<PayOrder, ChangeOrderStateContext<PayOrder, Order.New>> factory)
         {
             return await this.ProcessAsync(factory(command));
         }
@@ -38,7 +38,7 @@ namespace HightechAngular.Shop.Features.MyOrders
         [HttpPut("Dispute")]
         public async Task<IActionResult> Dispute(
             [FromBody] DisputeOrder command,
-            [FromServices] Func<DisputeOrder, ChangeOrderStateConext<DisputeOrder, Order.Shipped>> factory)
+            [FromServices] Func<DisputeOrder, ChangeOrderStateContext<DisputeOrder, Order.Shipped>> factory)
         {
             return await this.ProcessAsync(factory(command));
         }
@@ -46,7 +46,7 @@ namespace HightechAngular.Shop.Features.MyOrders
         [HttpPut("Complete")]
         public async Task<IActionResult> Complete(
             [FromBody] CompleteOrder command,
-            [FromServices] Func<CompleteOrder, ChangeOrderStateConext<CompleteOrder, Order.Shipped>> factory)
+            [FromServices] Func<CompleteOrder, ChangeOrderStateContext<CompleteOrder, Order.Shipped>> factory)
         {
             return await this.ProcessAsync(factory(command));
         }

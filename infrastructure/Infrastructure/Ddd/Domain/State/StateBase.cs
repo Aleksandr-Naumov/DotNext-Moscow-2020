@@ -23,5 +23,9 @@ namespace Infrastructure.Ddd.Domain.State
         }
 
         protected TEntity Entity { get; }
+
+        protected T As<T>()
+            where T : StateBase<TEntity, TStatus>
+            => (T)this;
     }
 }

@@ -1,13 +1,13 @@
 using System.Threading.Tasks;
 using Force.Cqrs;
 using Force.Ddd;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Base;
+using HightechAngular.Core.Entities;
 using Infrastructure.Cqrs;
 
 namespace HightechAngular.Admin.Features.OrderManagement
 {
-    public class PayOrder : HasIdBase, ICommand<Task<HandlerResult<OrderStatus>>>
+    public class PayOrder : ChangeOrderStateBase
     {
-        public int OrderId { get; set; }
     }
 }

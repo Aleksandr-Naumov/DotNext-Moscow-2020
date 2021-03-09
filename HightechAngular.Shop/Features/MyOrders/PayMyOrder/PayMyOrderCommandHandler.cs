@@ -1,6 +1,6 @@
 ﻿using Force.Ccc;
 using Force.Cqrs;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using HightechAngular.Shop.Features.MyOrders;
 using Infrastructure.Cqrs;
 using Infrastructure.Workflow;

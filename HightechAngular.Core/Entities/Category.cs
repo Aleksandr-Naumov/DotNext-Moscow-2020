@@ -2,7 +2,7 @@
 using Force.Extensions;
 using Infrastructure.Ddd;
 
-namespace HightechAngular.Orders.Entities
+namespace HightechAngular.Core.Entities
 {
     public class Category : IntEntityBase
     {

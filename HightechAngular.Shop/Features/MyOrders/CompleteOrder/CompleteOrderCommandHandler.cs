@@ -1,5 +1,5 @@
 ﻿using Force.Cqrs;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using Infrastructure.Cqrs;
 using Infrastructure.Workflow;
 using System;

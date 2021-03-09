@@ -9,12 +9,12 @@ using HightechAngular.Identity.Entities;
 using Infrastructure.Ddd;
 using Infrastructure.Ddd.Domain.State;
 
-namespace HightechAngular.Orders.Entities
+namespace HightechAngular.Core.Entities
 {
     // ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
     public partial class Order : OrderHasStateBase<OrderStatus, Order.OrderStateBase>
     {
-        public static readonly OrderSpecs Specs = new OrderSpecs();
+        public static readonly OrderSpecs Specs = OrderSpecs.Instance;
 
         protected Order()
         {

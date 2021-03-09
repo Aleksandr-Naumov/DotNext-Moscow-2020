@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using Force.Ddd;
 using HightechAngular.Core.Base;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 

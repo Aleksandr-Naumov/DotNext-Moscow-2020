@@ -4,8 +4,8 @@ using System.Linq;
 using System.Net;
 using Force.Cqrs;
 using Force.Extensions;
-using HightechAngular.Orders.Entities;
-using HightechAngular.Orders.Services;
+using HightechAngular.Core.Entities;
+using HightechAngular.Core.Services;
 using Infrastructure.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 

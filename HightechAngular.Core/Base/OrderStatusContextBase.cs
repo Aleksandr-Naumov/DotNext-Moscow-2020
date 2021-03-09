@@ -1,6 +1,6 @@
 ﻿using Force.Cqrs;
 using Force.Ddd;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using Infrastructure.Cqrs;
 using Infrastructure.OperationContext;
 using System;

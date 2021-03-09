@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace HightechAngular.Orders
+namespace HightechAngular.Core
 {
     public static class OrderRegistration
     {

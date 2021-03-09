@@ -1,9 +1,8 @@
-using HightechAngular.Orders.Base;
+using HightechAngular.Core.Base;
 
 namespace HightechAngular.Admin.Features.OrderManagement
 {
     public class CompleteOrderAdmin : ChangeOrderStateBase
     {
-        public int OrderId { get; set; }
     }
 }

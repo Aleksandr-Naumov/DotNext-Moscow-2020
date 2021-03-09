@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Force.Cqrs;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using HightechAngular.Shop.Features;
 using Infrastructure.AspNetCore;
 using Mapster;

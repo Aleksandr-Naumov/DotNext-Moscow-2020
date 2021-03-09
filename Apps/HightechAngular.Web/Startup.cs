@@ -4,7 +4,7 @@ using HightechAngular.Admin.Features.OrderManagement;
 using HightechAngular.Data;
 using HightechAngular.Identity.Entities;
 using HightechAngular.Identity.Services;
-using HightechAngular.Orders;
+using HightechAngular.Core;
 using HightechAngular.Shop;
 using HightechAngular.Shop.Features.Catalog;
 using HightechAngular.Web;

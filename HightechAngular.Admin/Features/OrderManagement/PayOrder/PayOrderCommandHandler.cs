@@ -1,7 +1,7 @@
 ﻿using Force.Ccc;
 using Force.Cqrs;
 using HightechAngular.Admin.Features.OrderManagement;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using Infrastructure.Cqrs;
 using Infrastructure.Workflow;
 using System;

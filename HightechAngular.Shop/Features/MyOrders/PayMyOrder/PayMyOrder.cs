@@ -7,7 +7,7 @@ using Infrastructure.Cqrs;
 
 namespace HightechAngular.Shop.Features.MyOrders
 {
-    public class PayMyOrder : ChangeOrderStateBase
+    public class PayMyOrder : ChangeStateOrderBase
     {
     }
 }

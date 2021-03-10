@@ -7,7 +7,7 @@ using Infrastructure.Cqrs;
 
 namespace HightechAngular.Admin.Features.OrderManagement
 {
-    public class PayOrder : ChangeOrderStateBase
+    public class PayOrder : ChangeStateOrderBase
     {
     }
 }

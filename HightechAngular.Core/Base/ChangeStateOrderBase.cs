@@ -6,7 +6,7 @@ using Infrastructure.Cqrs;
 
 namespace HightechAngular.Core.Base
 {
-    public abstract class ChangeOrderStateBase: 
+    public abstract class ChangeStateOrderBase: 
         HasIdBase,
         ICommand<Task<HandlerResult<OrderStatus>>>
     {

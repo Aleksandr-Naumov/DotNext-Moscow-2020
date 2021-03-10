@@ -8,14 +8,15 @@ namespace HightechAngular.Core.Base
 {
     public class ChangeOrderStateCommandHandler<TCommand, TFrom, TTo> :
         ICommandHandler<ChangeStateOrderContext<TCommand, TFrom>, Task<HandlerResult<OrderStatus>>>
-        where TCommand : ChangeOrderStateBase
+        where TCommand : ChangeStateOrderBase
         where TFrom : Order.OrderStateBase
         where TTo : Order.OrderStateBase
     {
         private IHandler<ChangeStateOrderContext<TCommand, TFrom>, Task<HandlerResult<TTo>>> Handler { get; set; }
 
         public ChangeOrderStateCommandHandler(
-            IHandler<ChangeStateOrderContext<TCommand, TFrom>,
+            IHandler<
+                ChangeStateOrderContext<TCommand, TFrom>,
                 Task<HandlerResult<TTo>>> handler)
         {
             Handler = handler;

@@ -13,7 +13,7 @@ namespace HightechAngular.Core.Base
 {
     public abstract class DomainHandlerBase<TCommand, TFrom, TTo> :
         IHandler<ChangeStateOrderContext<TCommand, TFrom>, Task<HandlerResult<TTo>>>
-        where TCommand : ChangeOrderStateBase
+        where TCommand : ChangeStateOrderBase
         where TFrom : Order.OrderStateBase
         where TTo : Order.OrderStateBase
     {

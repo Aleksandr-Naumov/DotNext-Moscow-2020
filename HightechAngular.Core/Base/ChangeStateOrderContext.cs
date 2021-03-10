@@ -10,7 +10,7 @@ namespace HightechAngular.Core.Base
 {
     public class ChangeStateOrderContext<TCommand, TState> :
         OrderStatusContextBase<TCommand>
-        where TCommand : ChangeOrderStateBase
+        where TCommand : ChangeStateOrderBase
         where TState : Order.OrderStateBase
     {
         [Required]

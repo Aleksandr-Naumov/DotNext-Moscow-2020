@@ -1,27 +1,15 @@
-using System;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using Force.Cqrs;
 using HightechAngular.Admin;
 using HightechAngular.Admin.Features.OrderManagement;
 using HightechAngular.Data;
 using HightechAngular.Identity.Entities;
 using HightechAngular.Identity.Services;
-using HightechAngular.Core;
-using HightechAngular.Core.Base;
-using HightechAngular.Core.Entities;
 using HightechAngular.Shop;
 using HightechAngular.Shop.Features.Catalog;
-using HightechAngular.Shop.Features.MyOrders;
-using HightechAngular.Web;
 using HightechAngular.Web.Filters;
-using Infrastructure;
-using Infrastructure.Cqrs;
 using Infrastructure.Extensions;
-using Infrastructure.OperationContext;
 using Infrastructure.SwaggerSchema.Dropdowns.Providers;
 using Infrastructure.SwaggerSchema.TypeProvider;
-using Mapster;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -52,7 +40,7 @@ namespace HightechAngular.Web
             ConfigureWeb(services);
             ConfigureInfrastructure(services);
         }
-        
+
         private static void ConfigureInfrastructure(IServiceCollection services)
         {
             services.AddSingleton<ITypeProvider>(new DefaultTypeProvider(x => x.StartsWith("HightechAngular")));
@@ -72,7 +60,10 @@ namespace HightechAngular.Web
             services.AddRazorPages();
             services
                 .AddControllersWithViews(options => options.Filters.Add(typeof(ExceptionsFilterAttribute)))
-                .AddJsonOptions(options => { options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); })
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                })
                 .AddModulesWithDbContext<ApplicationDbContext>(
                     typeof(CatalogController).Assembly,
                     typeof(OrderController).Assembly);

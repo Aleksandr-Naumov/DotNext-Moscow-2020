@@ -1,4 +1,10 @@
-﻿using HightechAngular.Web;
+﻿using System.Threading.Tasks;
+using Force.Cqrs;
+using HightechAngular.Admin.Features.OrderManagement;
+using HightechAngular.Core.Base;
+using HightechAngular.Core.Entities;
+using HightechAngular.Web;
+using Infrastructure.Cqrs;
 using Infrastructure.SwaggerSchema;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
@@ -7,6 +13,16 @@ namespace HightechAngular.Web
 {
     public static class StartupExtensions
     {
+        public static void AddStateOrder<TCommand, TFrom, TTo>(this IServiceCollection services)
+            where TCommand : ChangeStateOrderBase
+            where TFrom : Order.OrderStateBase
+            where TTo : Order.OrderStateBase
+        {
+            services.AddScoped<
+                ICommandHandler<ChangeStateOrderContext<TCommand, TFrom>, Task<HandlerResult<OrderStatus>>>,
+                ChangeOrderStateCommandHandler<TCommand, TFrom, TTo>>();
+        }
+
         public static void RegisterSwagger(this IServiceCollection services)
         {
             services.AddSwaggerGen(c =>

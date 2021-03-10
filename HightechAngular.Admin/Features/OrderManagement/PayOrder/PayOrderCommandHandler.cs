@@ -22,7 +22,7 @@ namespace HightechAngular.Admin.Features.OrderManagement
         {
         }
 
-        public override Order.Paid ChangeStateOrder(ChangeStateOrderContext<PayOrder, Order.New> input)
+        protected override Order.Paid ChangeStateOrder(ChangeStateOrderContext<PayOrder, Order.New> input)
         {
             return input.State.BecomePaid();
         }

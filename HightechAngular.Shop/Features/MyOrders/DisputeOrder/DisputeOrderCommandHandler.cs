@@ -21,7 +21,7 @@ namespace HightechAngular.Shop.Features.MyOrders
         {
         }
 
-        public override Order.Disputed ChangeStateOrder(ChangeStateOrderContext<DisputeOrder, Order.Shipped> input)
+        protected override Order.Disputed ChangeStateOrder(ChangeStateOrderContext<DisputeOrder, Order.Shipped> input)
         {
             return input.State.BecomeDisputed();
         }

@@ -19,7 +19,7 @@ namespace HightechAngular.Core.Base
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public DomainHandlerBase(IUnitOfWork unitOfWork)
+        protected DomainHandlerBase(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -43,6 +43,6 @@ namespace HightechAngular.Core.Base
             }
         }
 
-        public abstract TTo ChangeStateOrder(ChangeStateOrderContext<TCommand, TFrom> input);
+        protected abstract TTo ChangeStateOrder(ChangeStateOrderContext<TCommand, TFrom> input);
     }
 }

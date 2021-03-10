@@ -22,7 +22,7 @@ namespace HightechAngular.Admin.Features.OrderManagement
         {
         }
 
-        public override Order.Shipped ChangeStateOrder(ChangeStateOrderContext<ShipOrder, Order.Paid> input)
+        protected override Order.Shipped ChangeStateOrder(ChangeStateOrderContext<ShipOrder, Order.Paid> input)
         {
             return input.State.BecomeShipped();
         }

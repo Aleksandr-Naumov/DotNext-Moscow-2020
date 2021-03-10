@@ -23,7 +23,7 @@ namespace HightechAngular.Admin.Features.OrderManagement
         {
         }
 
-        public override Order.Complete ChangeStateOrder(ChangeStateOrderContext<CompleteOrderAdmin, Order.Disputed> input)
+        protected override Order.Complete ChangeStateOrder(ChangeStateOrderContext<CompleteOrderAdmin, Order.Disputed> input)
         {
             return input.State.BecomeComplete();
         }

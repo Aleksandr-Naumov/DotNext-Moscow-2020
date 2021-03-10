@@ -16,7 +16,7 @@ namespace HightechAngular.Core.Base
         [Required]
         public TState State => Order.As<TState>();
 
-        public ChangeStateOrderContext(TCommand request, Order order) : base(request, order)
+        protected ChangeStateOrderContext(TCommand request, Order order) : base(request, order)
         {
         }
     }

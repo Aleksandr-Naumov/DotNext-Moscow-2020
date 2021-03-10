@@ -23,7 +23,7 @@ namespace HightechAngular.Shop.Features.MyOrders
         {
         }
 
-        public override Order.Paid ChangeStateOrder(ChangeStateOrderContext<PayMyOrder, Order.New> input)
+        protected override Order.Paid ChangeStateOrder(ChangeStateOrderContext<PayMyOrder, Order.New> input)
         {
             return input.State.BecomePaid();
         }

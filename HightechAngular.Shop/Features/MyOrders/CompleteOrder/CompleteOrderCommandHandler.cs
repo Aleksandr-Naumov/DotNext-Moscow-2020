@@ -11,16 +11,17 @@ using HightechAngular.Core.Base;
 
 namespace HightechAngular.Shop.Features.MyOrders
 {
-    public class CompleteOrderCommandHandler : DomainHandlerBase<
-        CompleteOrder,
-        Order.Shipped,
-        Order.Complete>
+    public class CompleteOrderCommandHandler :
+        DomainHandlerBase<
+            CompleteOrder,
+            Order.Shipped,
+            Order.Complete>
     {
         public CompleteOrderCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
 
-        public override Order.Complete ChangeStateOrder(ChangeStateOrderContext<CompleteOrder, Order.Shipped> input)
+        protected override Order.Complete ChangeStateOrder(ChangeStateOrderContext<CompleteOrder, Order.Shipped> input)
         {
             return input.State.BecomeComplete();
         }

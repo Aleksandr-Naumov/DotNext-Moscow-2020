@@ -6,22 +6,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Force.Ccc;
+using HightechAngular.Core.Base;
 
 namespace HightechAngular.Shop.Features.MyOrders
 {
     public class DisputeOrderCommandHandler :
-        ICommandHandler<DisputeOrderContext, Task<HandlerResult<OrderStatus>>>
+        DomainHandlerBase<
+            DisputeOrder,
+            Order.Shipped,
+            Order.Disputed>
     {
-        public async Task<HandlerResult<OrderStatus>> Handle(DisputeOrderContext input)
+        public DisputeOrderCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            await Task.Delay(1000);
-            var result = input.Order.With((Order.Shipped newOrder) => newOrder.BecomeDisputed());
-            if (result == null)
-            {
-                return FailureInfo.Invalid("Order is in invalid state");
-            }
+        }
 
-            return result.EligibleStatus;
+        public override Order.Disputed ChangeStateOrder(ChangeStateOrderContext<DisputeOrder, Order.Shipped> input)
+        {
+            return input.State.BecomeDisputed();
         }
     }
 }

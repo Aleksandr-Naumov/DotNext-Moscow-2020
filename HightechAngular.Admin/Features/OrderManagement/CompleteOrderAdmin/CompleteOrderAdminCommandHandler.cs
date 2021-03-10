@@ -9,22 +9,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Force.Ccc;
 using HightechAngular.Core.Base;
+using HightechAngular.Shop.Features.MyOrders;
 
 namespace HightechAngular.Admin.Features.OrderManagement
 {
-    public class ShipOrderCommandHandler :
+    public class CompleteOrderAdminCommandHandler :
         DomainHandlerBase<
-            ShipOrder,
-            Order.Paid,
-            Order.Shipped>
+            CompleteOrderAdmin,
+            Order.Disputed,
+            Order.Complete>
     {
-        public ShipOrderCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public CompleteOrderAdminCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
 
-        public override Order.Shipped ChangeStateOrder(ChangeStateOrderContext<ShipOrder, Order.Paid> input)
+        public override Order.Complete ChangeStateOrder(ChangeStateOrderContext<CompleteOrderAdmin, Order.Disputed> input)
         {
-            return input.State.BecomeShipped();
+            return input.State.BecomeComplete();
         }
     }
 }

@@ -9,29 +9,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HightechAngular.Core.Base;
 
 namespace HightechAngular.Shop.Features.MyOrders
 {
     public class PayMyOrderCommandHandler :
-        ICommandHandler<PayMyOrderContext, Task<HandlerResult<OrderStatus>>>
+        DomainHandlerBase<
+            PayMyOrder,
+            Order.New,
+            Order.Paid>
     {
-        private readonly IUnitOfWork _unitOfWork;
-
-        public PayMyOrderCommandHandler(IUnitOfWork unitOfWork)
+        public PayMyOrderCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            _unitOfWork = unitOfWork;
         }
-        public async Task<HandlerResult<OrderStatus>> Handle(PayMyOrderContext input)
-        {
-            await Task.Delay(1000);
-            var result = input.Order.With((Order.New newOrder) => newOrder.BecomePaid());
-            if (result == null)
-            {
-                return FailureInfo.Invalid("Order is in invalid state");
-            }
 
-            _unitOfWork.Commit();
-            return result.EligibleStatus;
+        public override Order.Paid ChangeStateOrder(ChangeStateOrderContext<PayMyOrder, Order.New> input)
+        {
+            return input.State.BecomePaid();
         }
     }
 }

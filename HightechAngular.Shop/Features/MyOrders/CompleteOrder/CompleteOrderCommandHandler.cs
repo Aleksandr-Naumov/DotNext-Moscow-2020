@@ -6,22 +6,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Force.Ccc;
+using HightechAngular.Core.Base;
 
 namespace HightechAngular.Shop.Features.MyOrders
 {
-    public class CompleteOrderCommandHandler :
-        ICommandHandler<CompleteOrderContext, Task<HandlerResult<OrderStatus>>>
+    public class CompleteOrderCommandHandler : DomainHandlerBase<
+        CompleteOrder,
+        Order.Shipped,
+        Order.Complete>
     {
-        public async Task<HandlerResult<OrderStatus>> Handle(CompleteOrderContext input)
+        public CompleteOrderCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            await Task.Delay(1000);
-            var result = input.Order.With((Order.Shipped newOrder) => newOrder.BecomeComplete());
-            if (result == null)
-            {
-                return FailureInfo.Invalid("Order is in invalid state");
-            }
+        }
 
-            return result.EligibleStatus;
+        public override Order.Complete ChangeStateOrder(ChangeStateOrderContext<CompleteOrder, Order.Shipped> input)
+        {
+            return input.State.BecomeComplete();
         }
     }
 }

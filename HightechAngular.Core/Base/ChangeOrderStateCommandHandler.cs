@@ -12,7 +12,7 @@ namespace HightechAngular.Core.Base
         where TFrom : Order.OrderStateBase
         where TTo : Order.OrderStateBase
     {
-        private IHandler<ChangeStateOrderContext<TCommand, TFrom>, Task<HandlerResult<TTo>>> Handler { get; set; }
+        private IHandler<ChangeStateOrderContext<TCommand, TFrom>, Task<HandlerResult<TTo>>> Handler { get; }
 
         public ChangeOrderStateCommandHandler(
             IHandler<
@@ -28,7 +28,7 @@ namespace HightechAngular.Core.Base
                 .Handle(input)
                 .AwaitAndPipeTo(x =>
                     x.Match(
-                        result => new HandlerResult<OrderStatus>(result.EligibleStatus), 
+                        result => new HandlerResult<OrderStatus>(result.EligibleStatus),
                         failure => failure));
         }
     }

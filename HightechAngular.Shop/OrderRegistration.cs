@@ -15,10 +15,12 @@ namespace HightechAngular.Shop
     {
         public static void RegisterOrder(this IServiceCollection services)
         {
-            // не работает
-            //services.AddStateOrder<CompleteOrder, Order.Shipped, Order.Complete>();
-            //services.AddStateOrder<DisputeOrder, Order.Shipped, Order.Disputed>();
-            //services.AddStateOrder<PayMyOrder, Order.New, Order.Paid>();
+            /*services.AddScoped<ChangeStateOrderContext<CompleteOrder, Order.Shipped>, CompleteOrderContext>();
+            services.AddScoped<ChangeStateOrderContext<DisputeOrder, Order.Shipped>, DisputeOrderContext>();
+            services.AddScoped<ChangeStateOrderContext<PayMyOrder, Order.New>, PayMyOrderContext>();
+            services.AddStateOrder<CompleteOrder, Order.Shipped, Order.Complete>();
+            services.AddStateOrder<DisputeOrder, Order.Shipped, Order.Disputed>();
+            services.AddStateOrder<PayMyOrder, Order.New, Order.Paid>();*/
 
             services.AddScoped<
                 ICommandHandler<CompleteOrderContext, Task<HandlerResult<OrderStatus>>>,

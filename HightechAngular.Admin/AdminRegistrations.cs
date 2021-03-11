@@ -20,10 +20,12 @@ namespace HightechAngular.Admin
             services.AddScoped<IDropdownProvider<OrderListItem>, OrderListItemDropdownProvider>();
             services.AddScoped<IDropdownProvider<AllOrdersItem>, CreateOrderDropdownProvider>();
 
-            // не работает
-            //services.AddStateOrder<PayOrder,Order.New,Order.Paid>();
-            //services.AddStateOrder<ShipOrder, Order.Paid, Order.Shipped>();
-            //services.AddStateOrder<CompleteOrderAdmin, Order.Disputed, Order.Complete>();
+            /*services.AddScoped<ChangeStateOrderContext<PayOrder, Order.New>, PayOrderContext>();
+            services.AddScoped<ChangeStateOrderContext<ShipOrder, Order.Paid>, ShipOrderContext>();
+            services.AddScoped<ChangeStateOrderContext<CompleteOrderAdmin, Order.Disputed>, CompleteOrderAdminContext>();
+            services.AddStateOrder<PayOrder,Order.New,Order.Paid>();
+            services.AddStateOrder<ShipOrder, Order.Paid, Order.Shipped>();
+            services.AddStateOrder<CompleteOrderAdmin, Order.Disputed, Order.Complete>();*/
 
             services.AddScoped<
                 ICommandHandler<PayOrderContext, Task<HandlerResult<OrderStatus>>>,

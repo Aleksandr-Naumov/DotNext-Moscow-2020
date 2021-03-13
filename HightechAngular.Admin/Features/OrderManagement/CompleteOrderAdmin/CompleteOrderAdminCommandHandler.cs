@@ -13,11 +13,7 @@ using HightechAngular.Shop.Features.MyOrders;
 
 namespace HightechAngular.Admin.Features.OrderManagement
 {
-    public class CompleteOrderAdminCommandHandler :
-        DomainHandlerBase<
-            CompleteOrderAdmin,
-            Order.Disputed,
-            Order.Complete>
+    public class CompleteOrderAdminCommandHandler : CompleteOrderCommandHandlerBase<CompleteOrderAdmin, Order.Disputed>
     {
         public CompleteOrderAdminCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
         {

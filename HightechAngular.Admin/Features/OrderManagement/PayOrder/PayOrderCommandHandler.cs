@@ -9,14 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HightechAngular.Core.Base;
+using HightechAngular.Shop.Features.MyOrders.Base;
 
 namespace HightechAngular.Admin.Features.OrderManagement
 {
-    public class PayOrderCommandHandler :
-        DomainHandlerBase<
-            PayOrder,
-            Order.New,
-            Order.Paid>
+    public class PayOrderCommandHandler : PayOrderCommandHandlerBase<PayOrder>
     {
         public PayOrderCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
         {

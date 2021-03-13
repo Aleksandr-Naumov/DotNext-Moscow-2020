@@ -11,11 +11,7 @@ using HightechAngular.Core.Base;
 
 namespace HightechAngular.Shop.Features.MyOrders
 {
-    public class CompleteOrderCommandHandler :
-        DomainHandlerBase<
-            CompleteOrder,
-            Order.Shipped,
-            Order.Complete>
+    public class CompleteOrderCommandHandler : CompleteOrderCommandHandlerBase<CompleteOrder, Order.Shipped>
     {
         public CompleteOrderCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
         {

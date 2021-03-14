@@ -9,13 +9,14 @@ namespace HightechAngular.Core.Services
 {
     public static class ServicesExtensions
     {
-        public static void AddStateOrder<TCommand, TFrom, TTo>(this IServiceCollection services)
+        public static void AddStateOrder<TContext, TCommand, TFrom, TTo>(this IServiceCollection services)
+            where TContext : ChangeStateOrderContext<TCommand, TFrom>
             where TCommand : ChangeStateOrderBase
             where TFrom : Order.OrderStateBase
             where TTo : Order.OrderStateBase
         {
             services.AddScoped<
-                ICommandHandler<ChangeStateOrderContext<TCommand, TFrom>, Task<HandlerResult<OrderStatus>>>,
+                ICommandHandler<TContext, Task<HandlerResult<OrderStatus>>>,
                 ChangeOrderStateCommandHandler<TCommand, TFrom, TTo>>();
         }
     }

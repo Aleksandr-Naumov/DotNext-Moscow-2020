@@ -16,7 +16,7 @@ namespace HightechAngular.Shop.Features.MyOrders
         where TCommand : ChangeStateOrderBase
         where TFrom : Order.OrderStateBase
     {
-        public CompleteOrderCommandHandlerBase(IUnitOfWork unitOfWork) : base(unitOfWork)
+        protected CompleteOrderCommandHandlerBase(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
     }

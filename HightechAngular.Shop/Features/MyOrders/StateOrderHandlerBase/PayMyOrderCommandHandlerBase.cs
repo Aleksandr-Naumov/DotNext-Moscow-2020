@@ -15,7 +15,7 @@ namespace HightechAngular.Shop.Features.MyOrders.Base
             Order.Paid>
         where TCommand : ChangeStateOrderBase
     {
-        public PayOrderCommandHandlerBase(IUnitOfWork unitOfWork) : base(unitOfWork)
+        protected PayOrderCommandHandlerBase(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
     }

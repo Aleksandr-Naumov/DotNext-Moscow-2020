@@ -20,7 +20,7 @@ namespace HightechAngular.Shop.Features
         [Required]
         public Order Order { get; }
 
-        public OrderStatusContextBase(T request, Order order) : base(request)
+        protected OrderStatusContextBase(T request, Order order) : base(request)
         {
             Order = order;
         }

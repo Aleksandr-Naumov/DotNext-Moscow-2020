@@ -15,11 +15,7 @@ namespace HightechAngular.Shop.Features.MyOrders
         public async Task<HandlerResult<OrderStatus>> Handle(DisputeOrderContext input)
         {
             await Task.Delay(1000);
-            var result = input.Order.With((Order.Shipped newOrder) => newOrder.BecomeDisputed());
-            if (result == null)
-            {
-                return FailureInfo.Invalid("Order is in invalid state");
-            }
+            var result = input.ChangeOrderState;
 
             return result.EligibleStatus;
         }

@@ -13,6 +13,8 @@ namespace HightechAngular.Admin.Features.OrderManagement
 {
     public class PayOrderContext : OrderStatusContextBase<PayOrder>
     {
+        [Required]
+        public Order.Paid ChangeOrderState => Order.With((Order.New newOrder) => newOrder.BecomePaid())!;
         public PayOrderContext(PayOrder request, Order order) : base(request, order)
         {
         }

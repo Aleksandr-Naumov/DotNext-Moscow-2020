@@ -12,6 +12,8 @@ namespace HightechAngular.Shop.Features.MyOrders
 {
     public class CompleteOrderContext : OrderStatusContextBase<CompleteOrder>
     {
+        [Required]
+        public Order.Complete ChangeOrderState => Order.With((Order.Shipped newOrder) => newOrder.BecomeComplete())!;
         public CompleteOrderContext(CompleteOrder request, Order order) : base(request, order)
         {
         }

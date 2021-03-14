@@ -13,6 +13,8 @@ namespace HightechAngular.Admin.Features.OrderManagement
 {
     public class CompleteOrderAdminContext : OrderStatusContextBase<CompleteOrderAdmin>
     {
+        [Required]
+        public Order.Complete ChangeOrderState => Order.With((Order.Disputed newOrder) => newOrder.BecomeComplete())!;
         public CompleteOrderAdminContext(CompleteOrderAdmin request, Order order) : base(request, order)
         {
         }

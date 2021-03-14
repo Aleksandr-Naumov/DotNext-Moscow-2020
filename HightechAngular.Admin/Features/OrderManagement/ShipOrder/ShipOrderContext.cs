@@ -10,6 +10,8 @@ namespace HightechAngular.Admin.Features.OrderManagement
 {
     public class ShipOrderContext : OrderStatusContextBase<ShipOrder>
     {
+        [Required]
+        public Order.Shipped ChangeOrderState => Order.With((Order.Paid newOrder) => newOrder.BecomeShipped())!;
         public ShipOrderContext(ShipOrder request, Order order) : base(request, order)
         {
         }

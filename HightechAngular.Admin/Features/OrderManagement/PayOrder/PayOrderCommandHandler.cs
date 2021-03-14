@@ -23,11 +23,7 @@ namespace HightechAngular.Admin.Features.OrderManagement
         public async Task<HandlerResult<OrderStatus>> Handle(PayOrderContext input)
         {
             await Task.Delay(1000);
-            var result = input.Order.With((Order.New newOrder) => newOrder.BecomePaid());
-            if (result == null)
-            {
-                return FailureInfo.Invalid("Order is in invalid state");
-            }
+            var result = input.ChangeOrderState;
 
             _unitOfWork.Commit();
             return result.EligibleStatus;

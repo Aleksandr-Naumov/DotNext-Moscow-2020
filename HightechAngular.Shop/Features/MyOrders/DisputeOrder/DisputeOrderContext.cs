@@ -13,7 +13,7 @@ namespace HightechAngular.Shop.Features.MyOrders
     public class DisputeOrderContext : OrderStatusContextBase<DisputeOrder>
     {
         [Required]
-        public Order.Disputed ChangeOrderState => Order.With((Order.Shipped newOrder) => newOrder.BecomeDisputed())!;
+        public Order.Shipped State => (Order.Shipped)Order.State;
         public DisputeOrderContext(DisputeOrder request, Order order) : base(request, order)
         {
         }

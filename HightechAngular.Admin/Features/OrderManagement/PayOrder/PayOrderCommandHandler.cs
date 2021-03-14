@@ -23,7 +23,7 @@ namespace HightechAngular.Admin.Features.OrderManagement
         public async Task<HandlerResult<OrderStatus>> Handle(PayOrderContext input)
         {
             await Task.Delay(1000);
-            var result = input.ChangeOrderState;
+            var result = input.State.BecomePaid();
 
             _unitOfWork.Commit();
             return result.EligibleStatus;

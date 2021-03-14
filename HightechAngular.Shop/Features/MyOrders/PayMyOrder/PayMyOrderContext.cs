@@ -13,7 +13,7 @@ namespace HightechAngular.Shop.Features.MyOrders
     public class PayMyOrderContext : OrderStatusContextBase<PayMyOrder>
     {
         [Required]
-        public Order.Paid ChangeOrderState => Order.With((Order.New newOrder) => newOrder.BecomePaid())!;
+        public Order.New State => (Order.New)Order.State;
         public PayMyOrderContext(PayMyOrder request, Order order) : base(request, order)
         {
         }

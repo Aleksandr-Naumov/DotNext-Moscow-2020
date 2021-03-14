@@ -24,7 +24,7 @@ namespace HightechAngular.Shop.Features.MyOrders
         public async Task<HandlerResult<OrderStatus>> Handle(PayMyOrderContext input)
         {
             await Task.Delay(1000);
-            var result = input.ChangeOrderState;
+            var result = input.State.BecomePaid();
 
             _unitOfWork.Commit();
             return result.EligibleStatus;

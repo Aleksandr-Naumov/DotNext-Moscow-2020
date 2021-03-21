@@ -8,6 +8,7 @@ using Force.Ddd.DomainEvents;
 using Force.Reflection;
 using Infrastructure.Ddd;
 using Infrastructure.OperationContext;
+using Infrastructure.Rabbit;
 using Infrastructure.Validation;
 using Infrastructure.Workflow;
 using JetBrains.Annotations;
@@ -23,7 +24,7 @@ namespace Infrastructure.Extensions
         private static readonly Type[] TargetInterfaces =
         {
             typeof(IHandler<,>),
-            
+
             typeof(ICommandHandler<>),
             typeof(ICommandHandler<,>),
             typeof(IFilter<,>),
@@ -41,7 +42,7 @@ namespace Infrastructure.Extensions
         {
             var validator = sp.GetService<IValidator<TRequest>>();
             var uow = sp.GetService<IUnitOfWork>();
-            
+
             return validator == null
                 ? new HandlerWorkflow<TRequest, TResponse>(new UnitOfWorkWorkflowStep<TRequest, TResponse>(uow))
                 : new HandlerWorkflow<TRequest, TResponse>(
@@ -54,7 +55,7 @@ namespace Infrastructure.Extensions
         {
             var validatorAsync = sp.GetService<IAsyncValidator<TRequest>>();
             var uow = sp.GetService<IUnitOfWork>();
-            
+
             return validatorAsync == null
                 ? new AsyncHandlerWorkflow<TRequest, TResponse>(new UnitOfWorkWorkflowStep<TRequest, TResponse>(uow))
                 : new AsyncHandlerWorkflow<TRequest, TResponse>(
@@ -231,7 +232,7 @@ namespace Infrastructure.Extensions
             {
                 services.AddScoped(kv.Key, kv.Value);
             }
-            
+
             foreach (var ctx in ctxs)
             {
                 var inf = ctx
@@ -245,13 +246,13 @@ namespace Infrastructure.Extensions
 
                 services.AddScoped(factoryType);
 
-                services.AddScoped(funcType, sp => ((dynamic) sp.GetService(factoryType)).BuildFunc(sp));
+                services.AddScoped(funcType, sp => ((dynamic)sp.GetService(factoryType)).BuildFunc(sp));
             }
         }
 
         private static void AddInfrastructure(IServiceCollection services)
         {
-            services.TryAddScoped<IHandler<IEnumerable<IDomainEvent>>, DomainEventDispatcher>();
+            services.TryAddScoped<IHandler<IEnumerable<IDomainEvent>>, RabbitDomainEventDispatcher>();
             services.TryAddScoped<IUnitOfWork, EfCoreUnitOfWork>();
             services.TryAddScoped(typeof(IWorkflow<,>), typeof(HandlerWorkflowFactory<,>));
             services.TryAddScoped(typeof(IAsyncWorkflow<,>), typeof(HandlerAsyncWorkflowFactory<,>));

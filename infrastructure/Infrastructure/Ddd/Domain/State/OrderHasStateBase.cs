@@ -2,24 +2,24 @@
 
 namespace Infrastructure.Ddd.Domain.State
 {
-    public abstract class HasStateBase<TStatus, TState> :
-        HasStateBase<int, TStatus, TState>
-        where TStatus : Enum
+    public abstract class OrderHasStateBase<TStatusEnum, TState> :
+        HasStateBase<int, TStatusEnum, TState>
+        where TStatusEnum : Enum
     {
     }
-    
-    public abstract class HasStateBase<TKey, TStatus, TState>: 
+
+    public abstract class HasStateBase<TKey, TStatusEnum, TState> :
         EntityBase<TKey>,
-        IHasStatus<TStatus>, 
+        IHasStatus<TStatusEnum>,
         IHasState<TState>
-        where TStatus: Enum 
+        where TStatusEnum : Enum
         where TKey : IEquatable<TKey>
     {
-        private TStatus _status;
-        
+        private TStatusEnum _status;
+
         private TState _state;
-        
-        public TStatus Status
+
+        public TStatusEnum Status
         {
             get => _status;
             protected set
@@ -29,21 +29,21 @@ namespace Infrastructure.Ddd.Domain.State
             }
         }
 
-        public abstract TState GetState(TStatus status);
+        public abstract TState GetState(TStatusEnum status);
 
         public TState State => _state ??= GetState(Status);
-        
+
         public void With<T>(Action<T> action)
-            where T: class, TState
+            where T : class, TState
         {
             if (State is T state)
             {
                 action(state);
             }
         }
-        
-        public TResult With<T,TResult>(Func<T, TResult> func, TResult ifFalse = default)
-            where T: class, TState 
+
+        public TResult With<T, TResult>(Func<T, TResult> func, TResult ifFalse = default)
+            where T : class, TState
         {
             if (State is T state)
             {
@@ -53,14 +53,20 @@ namespace Infrastructure.Ddd.Domain.State
             return ifFalse;
         }
 
-        protected T To<T>(TStatus status)
+        protected T To<T>(TStatusEnum status)
             where T : TState
         {
             Status = status;
             return (T)State;
         }
 
-        public static explicit operator TState(HasStateBase<TKey, TStatus, TState> hasStatus)
+        public TCurrentState As<TCurrentState>()
+            where TCurrentState : TState
+        {
+            return (TCurrentState)State;
+        }
+
+        public static explicit operator TState(HasStateBase<TKey, TStatusEnum, TState> hasStatus)
         {
             return hasStatus.State;
         }

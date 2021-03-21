@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Shop.Features
 {
-    public class BaseOrderStatusContext<T> :
+    public class OrderStatusContextBase<T> :
         ByIntIdOperationContextBase<T>,
         ICommand<Task<HandlerResult<OrderStatus>>>
         where T : class, IHasId<int>
     {
         [Required]
         public Order Order { get; }
-        public BaseOrderStatusContext(T request, Order order) : base(request)
+        public OrderStatusContextBase(T request, Order order) : base(request)
         {
             Order = order;
         }

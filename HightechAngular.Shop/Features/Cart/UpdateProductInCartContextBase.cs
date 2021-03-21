@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Shop.Features.Cart
 {
-    public class BaseUpdateProductInCartContext<TIn, TOut> :
+    public class UpdateProductInCartContextBase<TIn, TOut> :
         ByIntIdOperationContextBase<TIn>,
         ICommand<TOut>
         where TIn : class, IHasId<int>
     {
         [Required]
         public Product Product { get; }
-        public BaseUpdateProductInCartContext(TIn request, Product product) : base(request)
+        public UpdateProductInCartContextBase(TIn request, Product product) : base(request)
         {
             Product = product;
         }

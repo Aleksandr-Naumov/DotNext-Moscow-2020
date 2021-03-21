@@ -11,8 +11,10 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Admin.Features.OrderManagement
 {
-    public class CompleteOrderAdminContext : BaseOrderStatusContext<CompleteOrderAdmin>
+    public class CompleteOrderAdminContext : OrderStatusContextBase<CompleteOrderAdmin>
     {
+        [Required]
+        public Order.Disputed State => Order.As<Order.Disputed>();
         public CompleteOrderAdminContext(CompleteOrderAdmin request, Order order) : base(request, order)
         {
         }

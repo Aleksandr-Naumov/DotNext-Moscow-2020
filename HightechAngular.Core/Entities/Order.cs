@@ -12,7 +12,7 @@ using Infrastructure.Ddd.Domain.State;
 namespace HightechAngular.Orders.Entities
 {
     // ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
-    public class Order : IntEntityBase
+    public partial class Order : OrderHasStateBase<OrderStatus, Order.OrderStateBase>
     {
         public static readonly OrderSpecs Specs = new OrderSpecs();
 
@@ -33,28 +33,6 @@ namespace HightechAngular.Orders.Entities
             Status = OrderStatus.New;
             this.EnsureInvariant();
         }
-        public OrderStatus BecomePaid()
-        {
-            Status = OrderStatus.Paid;
-            return Status;
-        }
-        public OrderStatus BecomeShipped()
-        {
-            Status = OrderStatus.Shipped;
-            return Status;
-        }
-
-        public OrderStatus BecomeDispute()
-        {
-            Status = OrderStatus.Dispute;
-            return Status;
-        }
-
-        public OrderStatus BecomeComplete()
-        {
-            Status = OrderStatus.Complete;
-            return Status;
-        }
 
         [Required]
         public virtual User User { get; protected set; } = default!;
@@ -71,6 +49,18 @@ namespace HightechAngular.Orders.Entities
 
         public Guid? TrackingCode { get; protected set; }
 
-        public OrderStatus Status { get; protected set; }
+        public override OrderStateBase GetState(OrderStatus status)
+        {
+            return status switch
+            {
+                OrderStatus.New => new New(this),
+                OrderStatus.Paid => new Paid(this),
+                OrderStatus.Shipped => new Shipped(this),
+                OrderStatus.Dispute => new Disputed(this),
+                OrderStatus.Complete => new Complete(this),
+
+                _ => throw new NotSupportedException($"Status \"{status}\" is not supported")
+            };
+        }
     }
 }

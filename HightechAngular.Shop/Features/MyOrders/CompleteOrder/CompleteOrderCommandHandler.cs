@@ -15,12 +15,7 @@ namespace HightechAngular.Shop.Features.MyOrders
     {
         public CompleteOrderCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-<<<<<<< HEAD
         }
-=======
-            await Task.Delay(1000);
-            var result = input.State.BecomeComplete();
->>>>>>> master
 
         protected override Order.Complete ChangeStateOrder(ChangeStateOrderContext<CompleteOrder, Order.Shipped> input)
         {

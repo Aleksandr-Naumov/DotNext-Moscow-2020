@@ -68,12 +68,6 @@ namespace Infrastructure.Ddd.Domain.State
                 : default;
         }
 
-        public TCurrentState As<TCurrentState>()
-            where TCurrentState : TState
-        {
-            return (TCurrentState)State;
-        }
-
         public static explicit operator TState(HasStateBase<TKey, TStatusEnum, TState> hasStatus)
         {
             return hasStatus.State;

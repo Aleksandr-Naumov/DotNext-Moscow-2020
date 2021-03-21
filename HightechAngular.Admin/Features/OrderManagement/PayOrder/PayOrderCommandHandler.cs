@@ -18,13 +18,6 @@ namespace HightechAngular.Admin.Features.OrderManagement
         public PayOrderCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
-<<<<<<< HEAD
-=======
-        public async Task<HandlerResult<OrderStatus>> Handle(PayOrderContext input)
-        {
-            await Task.Delay(1000);
-            var result = input.State.BecomePaid();
->>>>>>> master
 
         protected override Order.Paid ChangeStateOrder(ChangeStateOrderContext<PayOrder, Order.New> input)
         {

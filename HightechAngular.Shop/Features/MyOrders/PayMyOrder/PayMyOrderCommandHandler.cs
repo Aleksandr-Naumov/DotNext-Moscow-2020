@@ -19,13 +19,6 @@ namespace HightechAngular.Shop.Features.MyOrders
         public PayMyOrderCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
-<<<<<<< HEAD
-=======
-        public async Task<HandlerResult<OrderStatus>> Handle(PayMyOrderContext input)
-        {
-            await Task.Delay(1000);
-            var result = input.State.BecomePaid();
->>>>>>> master
 
         protected override Order.Paid ChangeStateOrder(ChangeStateOrderContext<PayMyOrder, Order.New> input)
         {

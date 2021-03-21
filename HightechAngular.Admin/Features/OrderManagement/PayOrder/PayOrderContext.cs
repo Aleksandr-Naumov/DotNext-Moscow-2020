@@ -14,8 +14,6 @@ namespace HightechAngular.Admin.Features.OrderManagement
 {
     public class PayOrderContext : ChangeStateOrderContext<PayOrder, Order.New>
     {
-        [Required]
-        public Order.New State => Order.As<Order.New>();
         public PayOrderContext(PayOrder request, Order order) : base(request, order)
         {
         }

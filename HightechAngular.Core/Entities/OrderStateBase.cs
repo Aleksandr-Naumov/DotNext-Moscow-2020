@@ -24,6 +24,10 @@ namespace HightechAngular.Core.Entities
 
             public Paid BecomePaid()
             {
+                foreach (var product in Entity.OrderItems)
+                {
+                    _domainEvents.Raise(new ProductPurchased(product.Id, product.Count));
+                }
                 return Entity.To<Paid>(OrderStatus.Paid);
             }
         }

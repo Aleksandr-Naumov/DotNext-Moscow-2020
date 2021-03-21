@@ -7,7 +7,7 @@ using Infrastructure.Ddd;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HightechAngular.Orders.Entities
+namespace HightechAngular.Core.Entities
 {
     public class Product : IntEntityBase
     {

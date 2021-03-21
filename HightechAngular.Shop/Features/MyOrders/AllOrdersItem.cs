@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using Force.Ddd;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HightechAngular.Admin.Features.OrderManagement

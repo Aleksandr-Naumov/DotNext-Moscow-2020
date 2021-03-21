@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Extensions.Hosting.AsyncInitialization;
 using HightechAngular.Identity.Entities;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

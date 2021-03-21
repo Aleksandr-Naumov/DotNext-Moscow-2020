@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace HightechAngular.Orders.Entities
+namespace HightechAngular.Core.Entities
 {
     public partial class Order
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Force.Cqrs;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using HightechAngular.Shop.Features.Index;
 using HightechAngular.Shop.Features.Index.Bestsellers;
 using HightechAngular.Shop.Features.Index.NewArrivals;

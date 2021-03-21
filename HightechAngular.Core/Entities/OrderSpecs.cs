@@ -1,11 +1,12 @@
 using System.Security.Principal;
 using Force.Ddd;
 
-namespace HightechAngular.Orders.Entities
+namespace HightechAngular.Core.Entities
 {
     public class OrderSpecs
     {
-        public OrderSpecs()
+        public static readonly OrderSpecs Instance = new OrderSpecs();
+        private OrderSpecs()
         {
         }
         

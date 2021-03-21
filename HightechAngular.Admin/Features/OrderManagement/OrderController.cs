@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Force.Ccc;
 using Force.Cqrs;
 using Force.Extensions;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using HightechAngular.Shop.Features.MyOrders;
 using Infrastructure.AspNetCore;
 using Infrastructure.Cqrs;

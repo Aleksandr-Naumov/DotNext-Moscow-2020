@@ -1,5 +1,5 @@
 ﻿using Force.Ccc;
-using HightechAngular.Orders.Services;
+using HightechAngular.Core.Services;
 using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;

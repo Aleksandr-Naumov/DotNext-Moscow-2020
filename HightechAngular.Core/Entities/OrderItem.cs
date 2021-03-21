@@ -4,7 +4,7 @@ using Force.Extensions;
 using JetBrains.Annotations;
 using IntEntityBase = Infrastructure.Ddd.Domain.IntEntityBase;
 
-namespace HightechAngular.Orders.Entities
+namespace HightechAngular.Core.Entities
 {
     public class OrderItem: IntEntityBase
     {

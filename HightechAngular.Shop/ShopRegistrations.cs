@@ -1,5 +1,5 @@
-using HightechAngular.Orders.Entities;
-using HightechAngular.Orders.Services;
+using HightechAngular.Core.Entities;
+using HightechAngular.Core.Services;
 using HightechAngular.Web.Features.Cart;
 using HightechAngular.Web.Features.Index;
 using Infrastructure.SwaggerSchema.Dropdowns.Providers;

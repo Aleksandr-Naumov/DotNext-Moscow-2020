@@ -4,7 +4,7 @@ using System.Linq;
 using HightechAngular.Identity.Entities;
 using Infrastructure.Ddd;
 
-namespace HightechAngular.Orders.Entities
+namespace HightechAngular.Core.Entities
 {
     public class Cart : EntityBase<Guid>
     {

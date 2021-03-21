@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 
-namespace HightechAngular.Orders.Services
+namespace HightechAngular.Core.Services
 {
     public class CartDto
     {

@@ -1,5 +1,5 @@
 ﻿using Force.Cqrs;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using Mapster;
 using System;
 using System.Collections.Generic;

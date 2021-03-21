@@ -1,32 +1,34 @@
 ﻿using Force.Ccc;
 using Force.Cqrs;
 using HightechAngular.Admin.Features.OrderManagement;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using Infrastructure.Cqrs;
 using Infrastructure.Workflow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HightechAngular.Core.Base;
+using HightechAngular.Shop.Features.MyOrders.Base;
 
 namespace HightechAngular.Admin.Features.OrderManagement
 {
-    public class PayOrderCommandHandler :
-        ICommandHandler<PayOrderContext, Task<HandlerResult<OrderStatus>>>
+    public class PayOrderCommandHandler : PayOrderCommandHandlerBase<PayOrder>
     {
-        private readonly IUnitOfWork _unitOfWork;
-        public PayOrderCommandHandler(
-            IUnitOfWork unitOfWork)
+        public PayOrderCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            _unitOfWork = unitOfWork;
         }
+<<<<<<< HEAD
+=======
         public async Task<HandlerResult<OrderStatus>> Handle(PayOrderContext input)
         {
             await Task.Delay(1000);
             var result = input.State.BecomePaid();
+>>>>>>> master
 
-            _unitOfWork.Commit();
-            return result.EligibleStatus;
+        protected override Order.Paid ChangeStateOrder(ChangeStateOrderContext<PayOrder, Order.New> input)
+        {
+            return input.State.BecomePaid();
         }
     }
 }

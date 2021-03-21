@@ -1,9 +1,8 @@
-using HightechAngular.Orders.Base;
+using HightechAngular.Core.Base;
 
 namespace HightechAngular.Shop.Features.MyOrders
 {
-    public class DisputeOrder : ChangeOrderStateBase
+    public class DisputeOrder : ChangeStateOrderBase
     {
-        public int OrderId { get; set; }
     }
 }

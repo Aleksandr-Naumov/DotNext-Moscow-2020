@@ -1,23 +1,30 @@
 ﻿using Force.Cqrs;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using Infrastructure.Cqrs;
 using Infrastructure.Workflow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Force.Ccc;
+using HightechAngular.Core.Base;
 
 namespace HightechAngular.Shop.Features.MyOrders
 {
-    public class CompleteOrderCommandHandler :
-        ICommandHandler<CompleteOrderContext, Task<HandlerResult<OrderStatus>>>
+    public class CompleteOrderCommandHandler : CompleteOrderCommandHandlerBase<CompleteOrder, Order.Shipped>
     {
-        public async Task<HandlerResult<OrderStatus>> Handle(CompleteOrderContext input)
+        public CompleteOrderCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
+<<<<<<< HEAD
+        }
+=======
             await Task.Delay(1000);
             var result = input.State.BecomeComplete();
+>>>>>>> master
 
-            return result.EligibleStatus;
+        protected override Order.Complete ChangeStateOrder(ChangeStateOrderContext<CompleteOrder, Order.Shipped> input)
+        {
+            return input.State.BecomeComplete();
         }
     }
 }

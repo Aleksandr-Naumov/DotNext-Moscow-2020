@@ -20,7 +20,12 @@ namespace HightechAngular.Admin.Features.OrderManagement
     {
         public ShipOrderCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
+<<<<<<< HEAD
         }
+=======
+            await Task.Delay(1000);
+            var result = input.State.BecomeShipped();
+>>>>>>> master
 
         protected override Order.Shipped ChangeStateOrder(ChangeStateOrderContext<ShipOrder, Order.Paid> input)
         {

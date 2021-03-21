@@ -19,7 +19,12 @@ namespace HightechAngular.Shop.Features.MyOrders
     {
         public DisputeOrderCommandHandler(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
+<<<<<<< HEAD
         }
+=======
+            await Task.Delay(1000);
+            var result = input.State.BecomeDisputed();
+>>>>>>> master
 
         protected override Order.Disputed ChangeStateOrder(ChangeStateOrderContext<DisputeOrder, Order.Shipped> input)
         {

@@ -1,4 +1,4 @@
-namespace HightechAngular.Orders.Entities
+namespace HightechAngular.Core.Entities
 {
     public enum OrderStatus
     {

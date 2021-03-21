@@ -1,6 +1,5 @@
 ﻿using Force.Cqrs;
-using HightechAngular.Orders.Entities;
-using HightechAngular.Orders.Services;
+using HightechAngular.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;

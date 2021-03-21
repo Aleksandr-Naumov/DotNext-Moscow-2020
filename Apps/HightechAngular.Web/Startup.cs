@@ -4,12 +4,9 @@ using HightechAngular.Admin.Features.OrderManagement;
 using HightechAngular.Data;
 using HightechAngular.Identity.Entities;
 using HightechAngular.Identity.Services;
-using HightechAngular.Orders;
 using HightechAngular.Shop;
 using HightechAngular.Shop.Features.Catalog;
-using HightechAngular.Web;
 using HightechAngular.Web.Filters;
-using Infrastructure;
 using Infrastructure.Extensions;
 using Infrastructure.SwaggerSchema.Dropdowns.Providers;
 using Infrastructure.SwaggerSchema.TypeProvider;
@@ -63,7 +60,10 @@ namespace HightechAngular.Web
             services.AddRazorPages();
             services
                 .AddControllersWithViews(options => options.Filters.Add(typeof(ExceptionsFilterAttribute)))
-                .AddJsonOptions(options => { options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); })
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                })
                 .AddModulesWithDbContext<ApplicationDbContext>(
                     typeof(CatalogController).Assembly,
                     typeof(OrderController).Assembly);

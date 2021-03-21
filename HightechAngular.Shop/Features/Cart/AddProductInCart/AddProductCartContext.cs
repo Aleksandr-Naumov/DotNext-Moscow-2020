@@ -1,5 +1,5 @@
 ﻿using Force.Cqrs;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using HightechAngular.Web.Features.Cart;
 using Infrastructure.OperationContext;
 using System;

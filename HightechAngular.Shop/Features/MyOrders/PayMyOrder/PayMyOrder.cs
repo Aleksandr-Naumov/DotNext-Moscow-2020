@@ -1,13 +1,13 @@
 using System.Threading.Tasks;
 using Force.Cqrs;
 using Force.Ddd;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Base;
+using HightechAngular.Core.Entities;
 using Infrastructure.Cqrs;
 
 namespace HightechAngular.Shop.Features.MyOrders
 {
-    public class PayMyOrder : HasIdBase, ICommand<Task<HandlerResult<OrderStatus>>>
+    public class PayMyOrder : ChangeStateOrderBase
     {
-        public int OrderId { get; set; } 
     }
 }

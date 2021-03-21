@@ -1,6 +1,6 @@
 ﻿using Force.Cqrs;
 using HightechAngular.Identity.Services;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using Infrastructure.Cqrs.Read;
 using JetBrains.Annotations;
 using System;

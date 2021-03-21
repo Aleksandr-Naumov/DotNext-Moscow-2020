@@ -1,5 +1,5 @@
 ﻿using Force.Ddd;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using System;

@@ -9,13 +9,13 @@ using HightechAngular.Identity.Entities;
 using Infrastructure.Ddd;
 using Infrastructure.Ddd.Domain.State;
 
-namespace HightechAngular.Orders.Entities
+namespace HightechAngular.Core.Entities
 {
     // ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
-    public partial class Order : OrderHasStateBase<OrderStatus, Order.OrderStateBase>
+    public partial class Order : OrderHasStateBase<OrderStatus, Order.OrderStateBase>, IHasDomainEvents
     {
-        public static readonly OrderSpecs Specs = new OrderSpecs();
-
+        public static readonly OrderSpecs Specs = OrderSpecs.Instance;
+        private readonly static DomainEventStore _domainEvents = new DomainEventStore();
         protected Order()
         {
         }
@@ -61,6 +61,11 @@ namespace HightechAngular.Orders.Entities
 
                 _ => throw new NotSupportedException($"Status \"{status}\" is not supported")
             };
+        }
+
+        public IEnumerable<IDomainEvent> GetDomainEvents()
+        {
+            return _domainEvents;
         }
     }
 }

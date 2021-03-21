@@ -3,7 +3,7 @@ using Force.Ddd;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace HightechAngular.Orders.Entities
+namespace HightechAngular.Core.Entities
 {
     // JSON Serialization prevents encapsulation :(
     public class CartItem

@@ -2,7 +2,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace HightechAngular.Orders.Services
+namespace HightechAngular.Core.Services
 {
     public static class SessionExtensions
     {

@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Force.Extensions;
 using HightechAngular.Identity.Services;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 using Microsoft.AspNetCore.Http;
 
-namespace HightechAngular.Orders.Services
+namespace HightechAngular.Core.Services
 {
     public class CartStorage : ICartStorage
     {

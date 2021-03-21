@@ -1,8 +1,8 @@
 using System.Linq;
 using HightechAngular.Identity.Entities;
-using HightechAngular.Orders.Entities;
+using HightechAngular.Core.Entities;
 
-namespace HightechAngular.Orders.Services
+namespace HightechAngular.Core.Services
 {
     public static class CartExtensions
     {

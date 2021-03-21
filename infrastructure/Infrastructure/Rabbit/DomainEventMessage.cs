@@ -41,7 +41,6 @@ namespace Infrastructure.Rabbit
         {
             get => Data?.ContainsKey(key) == true ? Data[key] : default;
             set
-
             {
                 if (Data != null)
                 {

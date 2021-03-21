@@ -13,6 +13,7 @@ namespace HightechAngular.Web
             var host = CreateHostBuilder(args).Build();
             await host.InitAsync();
             await host.RunAsync();
+
             var hostWorker = CreateHostBuilderWorker(args).Build();
             await hostWorker.InitAsync();
             await hostWorker.RunAsync();

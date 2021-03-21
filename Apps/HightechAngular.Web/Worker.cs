@@ -75,6 +75,7 @@ namespace HightechAngular.Web
         private void Dispatch(dynamic message)
         {
             // TODO: здесь диспетчеризация
+            _domainEventDispatcher.Handle(message);
         }
     }
 }

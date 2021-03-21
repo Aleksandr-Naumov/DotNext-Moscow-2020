@@ -1,6 +1,7 @@
 ﻿using Force.Cqrs;
 using HightechAngular.Orders.Entities;
 using Infrastructure.Cqrs;
+using Infrastructure.Workflow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,9 @@ namespace HightechAngular.Shop.Features.MyOrders
         public async Task<HandlerResult<OrderStatus>> Handle(CompleteOrderContext input)
         {
             await Task.Delay(1000);
-            var result = input.Order.BecomeComplete();
-            return new HandlerResult<OrderStatus>(result);
+            var result = input.State.BecomeComplete();
+
+            return result.EligibleStatus;
         }
     }
 }

@@ -10,8 +10,10 @@ using System.Threading.Tasks;
 
 namespace HightechAngular.Shop.Features.MyOrders
 {
-    public class CompleteOrderContext : BaseOrderStatusContext<CompleteOrder>
+    public class CompleteOrderContext : OrderStatusContextBase<CompleteOrder>
     {
+        [Required]
+        public Order.Shipped State => Order.As<Order.Shipped>();
         public CompleteOrderContext(CompleteOrder request, Order order) : base(request, order)
         {
         }

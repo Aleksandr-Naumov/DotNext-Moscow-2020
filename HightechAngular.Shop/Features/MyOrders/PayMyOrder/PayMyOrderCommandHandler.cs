@@ -3,6 +3,7 @@ using Force.Cqrs;
 using HightechAngular.Orders.Entities;
 using HightechAngular.Shop.Features.MyOrders;
 using Infrastructure.Cqrs;
+using Infrastructure.Workflow;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -23,9 +24,10 @@ namespace HightechAngular.Shop.Features.MyOrders
         public async Task<HandlerResult<OrderStatus>> Handle(PayMyOrderContext input)
         {
             await Task.Delay(1000);
-            var result = input.Order.BecomePaid();
+            var result = input.State.BecomePaid();
+
             _unitOfWork.Commit();
-            return new HandlerResult<OrderStatus>(result);
+            return result.EligibleStatus;
         }
     }
 }

@@ -7,8 +7,6 @@ namespace Infrastructure.Rabbit
 {
     public class DomainEventMessage
     {
-        public DomainEventMessage() { }
-
         public DomainEventMessage(IDomainEvent domainEvent)
         {
             if (domainEvent == null)
@@ -31,15 +29,15 @@ namespace Infrastructure.Rabbit
             }
         }
 
-        public DateTime Happened { get; set; }
+        public DateTime Happened { get; }
 
-        public string EventType { get; set; }
+        public string EventType { get; }
 
-        public Dictionary<string, object> Data = new Dictionary<string, object>();
+        public Dictionary<string, object> Data = new();
 
         public object this[string key]
         {
-            get => Data?.ContainsKey(key) == true ? Data[key] : default;
+            get => Data.ContainsKey(key) == true ? Data[key] : default;
             set
             {
                 if (Data != null)

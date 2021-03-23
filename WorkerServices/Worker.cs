@@ -15,7 +15,7 @@ using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-namespace HightechAngular.Web
+namespace WorkerServices
 {
     public class Worker : BackgroundService
     {
@@ -36,10 +36,13 @@ namespace HightechAngular.Web
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.ExchangeDeclare(exchange: ExchangeName, type: ExchangeType.Fanout);
+                channel.ExchangeDeclare(
+                    exchange: ExchangeName, 
+                    type: ExchangeType.Fanout);
 
                 var queueName = channel.QueueDeclare().QueueName;
-                channel.QueueBind(queue: queueName,
+                channel.QueueBind(
+                    queue: queueName,
                     exchange: ExchangeName,
                     routingKey: "");
 
@@ -52,7 +55,9 @@ namespace HightechAngular.Web
                     var message = Deserialize(ea);
                     Dispatch(message);
                 };
-                channel.BasicConsume(queue: queueName,
+
+                channel.BasicConsume(
+                    queue: queueName,
                     autoAck: true,
                     consumer: consumer);
             }

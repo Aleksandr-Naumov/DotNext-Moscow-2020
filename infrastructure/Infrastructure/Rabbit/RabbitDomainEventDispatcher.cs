@@ -11,7 +11,7 @@ namespace Infrastructure.Rabbit
 {
     public class RabbitDomainEventDispatcher : IHandler<IEnumerable<IDomainEvent>>
     {
-        public const string ExchangeName = "domain-events";
+        private const string ExchangeName = "domain-events";
 
         public void Handle(IEnumerable<IDomainEvent> input)
         {
@@ -19,10 +19,14 @@ namespace Infrastructure.Rabbit
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.ExchangeDeclare(exchange: ExchangeName, type: ExchangeType.Fanout);
+                channel.ExchangeDeclare(
+                    exchange: ExchangeName, 
+                    type: ExchangeType.Fanout);
+
                 var body = GetBody(input);
 
-                channel.BasicPublish(exchange: ExchangeName,
+                channel.BasicPublish(
+                    exchange: ExchangeName,
                     routingKey: "",
                     basicProperties: null,
                     body: body);

@@ -28,6 +28,7 @@ namespace HightechAngular.Core.Entities
                 {
                     _domainEvents.Raise(new ProductPurchased(product.Id, product.Count));
                 }
+
                 return Entity.To<Paid>(OrderStatus.Paid);
             }
         }

@@ -1,10 +1,11 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Force.Cqrs;
+using Force.Ddd.DomainEvents;
+using Infrastructure.Ddd;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace WorkerService
 {
@@ -25,6 +26,7 @@ namespace WorkerService
                 })
                 .ConfigureServices((hostContext, services) =>
                 {
+                    services.AddSingleton<IHandler<IEnumerable<IDomainEvent>>, DomainEventDispatcher>();
                     services.AddHostedService<Worker>();
                 });
     }

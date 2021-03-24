@@ -72,7 +72,11 @@ namespace HightechAngular.Web
             services.RegisterAdmin();
             services.RegisterOrder();
 
-            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
+            services.AddSpaStaticFiles(configuration => 
+            {
+                configuration.RootPath = "ClientApp/dist";
+            });
+
             services.RegisterSwagger();
             services.AddHttpContextAccessor();
             services.AddSession(options =>

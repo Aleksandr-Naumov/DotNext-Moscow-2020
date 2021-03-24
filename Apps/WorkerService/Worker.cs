@@ -30,18 +30,24 @@ namespace WorkerService
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             var factory = new ConnectionFactory() { HostName = "localhost" };
-            using (var connection = factory.CreateConnection())
-            using (var channel = connection.CreateModel())
-            {
-                channel.ExchangeDeclare(
-                    exchange: ExchangeName, 
-                    type: ExchangeType.Fanout);
+            using var connection = factory.CreateConnection();
+            using var channel = connection.CreateModel();
 
-                var queueName = channel.QueueDeclare().QueueName;
-                channel.QueueBind(
-                    queue: queueName,
-                    exchange: ExchangeName,
-                    routingKey: "");
+            channel.ExchangeDeclare(
+            exchange: ExchangeName,
+            type: ExchangeType.Fanout);
+
+            var queueName = channel.QueueDeclare().QueueName;
+            channel.QueueBind(
+                queue: queueName,
+                exchange: ExchangeName,
+                routingKey: "");
+
+            _logger.LogInformation($"Worker running at: {DateTimeOffset.Now}");
+
+            while (!stoppingToken.IsCancellationRequested)
+            {
+                await Task.Delay(1000, stoppingToken);
 
                 Console.WriteLine(" [*] Waiting for logs.");
 
@@ -58,16 +64,13 @@ namespace WorkerService
                     autoAck: true,
                     consumer: consumer);
             }
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                await Task.Delay(1000, stoppingToken);
-            }
         }
         private static DomainEventMessage[] Deserialize(BasicDeliverEventArgs input)
         {
             var body = input.Body.ToArray();
             var message = Encoding.UTF8.GetString(body);
+
+            Console.WriteLine($" [x] {message}");
 
             return JsonConvert.DeserializeObject<DomainEventMessage[]>(message);
         }

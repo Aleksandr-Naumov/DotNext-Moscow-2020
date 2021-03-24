@@ -33,7 +33,7 @@ namespace Infrastructure.Rabbit
 
         public string EventType { get; }
 
-        public Dictionary<string, object> Data = new();
+        public Dictionary<string, object> Data { get; }
 
         public object this[string key]
         {

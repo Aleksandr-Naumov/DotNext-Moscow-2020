@@ -1,8 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,12 +13,11 @@ using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-namespace WorkerServices
+namespace WorkerService
 {
     public class Worker : BackgroundService
     {
-        const string ExchangeName = "domain-events";
-
+        private const string ExchangeName = "domain-events";
         private readonly ILogger<Worker> _logger;
         private readonly IHandler<IEnumerable<IDomainEvent>> _domainEventDispatcher;
 
@@ -61,14 +58,12 @@ namespace WorkerServices
                     autoAck: true,
                     consumer: consumer);
             }
-
             while (!stoppingToken.IsCancellationRequested)
             {
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 await Task.Delay(1000, stoppingToken);
             }
         }
-
         private static DomainEventMessage[] Deserialize(BasicDeliverEventArgs input)
         {
             var body = input.Body.ToArray();

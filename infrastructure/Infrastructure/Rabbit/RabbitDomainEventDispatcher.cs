@@ -15,12 +15,14 @@ namespace Infrastructure.Rabbit
 
         public void Handle(IEnumerable<IDomainEvent> input)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            using (var connection = factory.CreateConnection())
-            using (var channel = connection.CreateModel())
+            if (input.Any())
             {
+                var factory = new ConnectionFactory() { HostName = "localhost" };
+                using var connection = factory.CreateConnection();
+                using var channel = connection.CreateModel();
+
                 channel.ExchangeDeclare(
-                    exchange: ExchangeName, 
+                    exchange: ExchangeName,
                     type: ExchangeType.Fanout);
 
                 var body = GetBody(input);

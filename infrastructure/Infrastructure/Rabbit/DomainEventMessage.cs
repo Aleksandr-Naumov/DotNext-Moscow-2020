@@ -33,18 +33,12 @@ namespace Infrastructure.Rabbit
 
         public string EventType { get; }
 
-        public Dictionary<string, object> Data { get; }
+        public Dictionary<string, object> Data = new();
 
         public object this[string key]
         {
             get => Data.ContainsKey(key) == true ? Data[key] : default;
-            set
-            {
-                if (Data != null)
-                {
-                    Data[key] = value;
-                }
-            }
+            set { Data[key] = value; }
         }
     }
 }

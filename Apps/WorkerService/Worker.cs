@@ -55,7 +55,9 @@ namespace WorkerService
 
                 consumer.Received += (model, ea) =>
                 {
-                    var message = Deserialize(ea);
+                    var body = ea.Body.ToArray();
+                    var message = Deserialize(body);
+
                     Dispatch(message);
                 };
 
@@ -65,10 +67,9 @@ namespace WorkerService
                     consumer: consumer);
             }
         }
-        private static DomainEventMessage[] Deserialize(BasicDeliverEventArgs input)
+        private static DomainEventMessage[] Deserialize(byte[] input)
         {
-            var body = input.Body.ToArray();
-            var message = Encoding.UTF8.GetString(body);
+            var message = Encoding.UTF8.GetString(input);
 
             Console.WriteLine($" [x] {message}");
 

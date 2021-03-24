@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <UserSecretsId>dotnet-WorkerService-18741CB0-EA98-442B-83BC-DFB6E0B65DEE</UserSecretsId>
+		<Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>

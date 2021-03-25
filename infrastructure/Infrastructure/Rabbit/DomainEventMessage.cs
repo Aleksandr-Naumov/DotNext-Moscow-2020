@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using Force.Ddd.DomainEvents;
+using Newtonsoft.Json;
 
 namespace Infrastructure.Rabbit
 {
     public class DomainEventMessage
     {
+        [JsonConstructor]
+        private DomainEventMessage(Dictionary<string, object> data, string eventType)
+        {
+            Data = data;
+            EventType = eventType;
+        }
         public DomainEventMessage(IDomainEvent domainEvent)
         {
             if (domainEvent == null)

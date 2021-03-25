@@ -9,10 +9,11 @@ namespace Infrastructure.Rabbit
     public class DomainEventMessage : IDomainEvent
     {
         [JsonConstructor]
-        private DomainEventMessage(Dictionary<string, object> data, string eventType)
+        private DomainEventMessage(Dictionary<string, object> data, string eventType, DateTime happened)
         {
             Data = data;
             EventType = eventType;
+            Happened = happened;
         }
         public DomainEventMessage(IDomainEvent domainEvent)
         {

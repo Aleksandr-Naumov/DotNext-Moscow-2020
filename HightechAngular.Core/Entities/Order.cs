@@ -15,7 +15,7 @@ namespace HightechAngular.Core.Entities
     public partial class Order : OrderHasStateBase<OrderStatus, Order.OrderStateBase>, IHasDomainEvents
     {
         public static readonly OrderSpecs Specs = OrderSpecs.Instance;
-        private static DomainEventStore _domainEvents = new DomainEventStore();
+        private readonly static DomainEventStore _domainEvents = new DomainEventStore();
         protected Order()
         {
         }

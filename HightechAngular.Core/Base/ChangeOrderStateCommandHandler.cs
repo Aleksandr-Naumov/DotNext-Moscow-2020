@@ -30,7 +30,7 @@ namespace HightechAngular.Core.Base
                     x.Match(
                         result => 
                         {
-                            input.Order.RemoveDomainEvents();
+                            //input.Order.RemoveDomainEvents();
                             return new HandlerResult<OrderStatus>(result.EligibleStatus);
                         },
                         failure => failure));

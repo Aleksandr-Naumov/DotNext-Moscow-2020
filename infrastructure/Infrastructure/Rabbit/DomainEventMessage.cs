@@ -35,10 +35,7 @@ namespace Infrastructure.Rabbit
         public object this[string key]
         {
             get => Data.ContainsKey(key) == true ? Data[key] : default;
-            set
-            {
-                Data[key] = value;
-            }
+            set { Data[key] = value; }
         }
     }
 }

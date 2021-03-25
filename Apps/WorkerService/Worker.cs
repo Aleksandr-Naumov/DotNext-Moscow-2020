@@ -78,7 +78,6 @@ namespace WorkerService
 
         private void Dispatch(dynamic message)
         {
-            // TODO: здесь диспетчеризация
             _domainEventDispatcher.Handle(message);
         }
     }

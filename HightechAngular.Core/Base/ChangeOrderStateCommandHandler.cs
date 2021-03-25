@@ -24,12 +24,18 @@ namespace HightechAngular.Core.Base
 
         public Task<HandlerResult<OrderStatus>> Handle(ChangeStateOrderContext<TCommand, TFrom> input)
         {
-            return Handler
+            var result = Handler
                 .Handle(input)
                 .AwaitAndPipeTo(x =>
                     x.Match(
-                        result => new HandlerResult<OrderStatus>(result.EligibleStatus),
+                        result => 
+                        {
+                            input.Order.RemoveDomainEvents();
+                            return new HandlerResult<OrderStatus>(result.EligibleStatus);
+                        },
                         failure => failure));
+
+            return result;
         }
     }
 }

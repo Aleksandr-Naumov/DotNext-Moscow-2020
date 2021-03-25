@@ -15,7 +15,7 @@ namespace HightechAngular.Core.Entities
     public partial class Order : OrderHasStateBase<OrderStatus, Order.OrderStateBase>, IHasDomainEvents
     {
         public static readonly OrderSpecs Specs = OrderSpecs.Instance;
-        private readonly static DomainEventStore _domainEvents = new DomainEventStore();
+        private static DomainEventStore _domainEvents = new DomainEventStore();
         protected Order()
         {
         }
@@ -62,7 +62,10 @@ namespace HightechAngular.Core.Entities
                 _ => throw new NotSupportedException($"Status \"{status}\" is not supported")
             };
         }
-
+        public void RemoveDomainEvents()
+        {
+            _domainEvents._domainEvents.Clear();
+        }
         public IEnumerable<IDomainEvent> GetDomainEvents()
         {
             return _domainEvents;

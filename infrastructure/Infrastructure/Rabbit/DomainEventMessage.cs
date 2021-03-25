@@ -14,7 +14,6 @@ namespace Infrastructure.Rabbit
                 throw new ArgumentNullException(nameof(domainEvent));
             }
 
-            Happened = domainEvent.Happened;
             EventType = domainEvent.GetType().FullName;
 
             var properties = domainEvent
@@ -29,8 +28,6 @@ namespace Infrastructure.Rabbit
             }
         }
 
-        public DateTime Happened { get; }
-
         public string EventType { get; }
 
         public Dictionary<string, object> Data = new();
@@ -38,7 +35,10 @@ namespace Infrastructure.Rabbit
         public object this[string key]
         {
             get => Data.ContainsKey(key) == true ? Data[key] : default;
-            set { Data[key] = value; }
+            set
+            {
+                Data[key] = value;
+            }
         }
     }
 }

@@ -6,13 +6,14 @@ using Newtonsoft.Json;
 
 namespace Infrastructure.Rabbit
 {
-    public class DomainEventMessage
+    public class DomainEventMessage : IDomainEvent
     {
         [JsonConstructor]
-        private DomainEventMessage(Dictionary<string, object> data, string eventType)
+        private DomainEventMessage(Dictionary<string, object> data, string eventType, DateTime happened)
         {
             Data = data;
             EventType = eventType;
+            Happened = happened;
         }
         public DomainEventMessage(IDomainEvent domainEvent)
         {
@@ -22,6 +23,7 @@ namespace Infrastructure.Rabbit
             }
 
             EventType = domainEvent.GetType().FullName;
+            Happened = domainEvent.Happened;
 
             var properties = domainEvent
                 .GetType()
@@ -36,6 +38,8 @@ namespace Infrastructure.Rabbit
         }
 
         public string EventType { get; }
+
+        public DateTime Happened { get; }
 
         public Dictionary<string, object> Data = new();
 

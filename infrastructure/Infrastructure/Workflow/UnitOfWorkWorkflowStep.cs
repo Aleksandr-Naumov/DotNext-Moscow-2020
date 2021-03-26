@@ -40,13 +40,12 @@ namespace Infrastructure.Workflow
 
         void Dispatch<T>(ICommand<T> command)
         {
-            //_unitOfWork.Commit(); //Вызывается второй Commit,
-                                    //который мне кажется не нужен вообще здесь(тк из-за него вызывается второй раз диспетчер)
+            _unitOfWork.Commit();
         }
         
         void Dispatch(ICommand command)
         {
-            //_unitOfWork.Commit();
+            _unitOfWork.Commit();
         }
         
         void Dispatch(object command)

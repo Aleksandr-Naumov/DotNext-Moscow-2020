@@ -22,7 +22,7 @@ namespace Infrastructure.Rabbit
                 throw new ArgumentNullException(nameof(domainEvent));
             }
 
-            EventType = domainEvent.GetType().FullName;
+            EventType = domainEvent.GetType().Name;
             Happened = domainEvent.Happened;
 
             var properties = domainEvent

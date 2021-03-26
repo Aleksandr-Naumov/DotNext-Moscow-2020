@@ -76,9 +76,43 @@ namespace WorkerService
             return JsonConvert.DeserializeObject<DomainEventMessage[]>(message);
         }
 
-        private void Dispatch(dynamic message)
+        private void Dispatch(DomainEventMessage[] message)
         {
-            _domainEventDispatcher.Handle(message);
+            var domainEvents = message
+                .Select(CreateEvent)
+                .Where(x => x != null)
+                .ToList();
+
+            _domainEventDispatcher.Handle(domainEvents);
+        }
+
+        private IDomainEvent CreateEvent(DomainEventMessage message)
+        {
+            var types = this.GetType().Assembly.GetTypes();
+            var type = types.FirstOrDefault(x => x.Name == message.EventType);
+            if (type == null)
+            {
+                return null;
+            }
+
+            try
+            {
+                var domainEvent = Activator.CreateInstance(type);
+                var properties = type.GetProperties().Where(x => x.CanRead && x.CanWrite).ToDictionary(x => x.Name, x => x);
+                foreach (var p in properties)
+                {
+                    if (message.Data.ContainsKey(p.Key))
+                    {
+                        p.Value.SetValue(domainEvent, Convert.ChangeType(message.Data[p.Key], p.Value.PropertyType));
+                    }
+                }
+                return (IDomainEvent)domainEvent;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return null;
+            }
         }
     }
 }

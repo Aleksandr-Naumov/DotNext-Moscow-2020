@@ -26,6 +26,7 @@ namespace WorkerService
                 })
                 .ConfigureServices((hostContext, services) =>
                 {
+                    services.AddTransient<IHandler<IEnumerable<ProductPurchased>>, OrderDomainEventHandler>();
                     services.AddSingleton<IHandler<IEnumerable<IDomainEvent>>, DomainEventDispatcher>();
                     services.AddHostedService<Worker>();
                 });

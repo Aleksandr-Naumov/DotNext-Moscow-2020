@@ -37,7 +37,6 @@ namespace WorkerService
                     services.AddDbContextAndQueryables<ApplicationDbContext>();
                     services.AddAsyncInitializer<ApplicationDbContextInitializer>();
                     services.AddScoped<DbContext, ApplicationDbContext>();
-                    services.AddDistributedMemoryCache();
 
                     services.AddTransient<IHandler<IEnumerable<ProductPurchased>>, OrderDomainEventHandler>();
                     services.AddSingleton<IHandler<IEnumerable<IDomainEvent>>, DomainEventDispatcher>();

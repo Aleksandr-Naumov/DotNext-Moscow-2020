@@ -24,7 +24,6 @@ namespace WorkerService
                                .Where(product => product.Id == x.Key)
                                .BatchUpdate(Product.UpdatePurchaseCountExpression(dict[x.Key])))
                            .ToList();
-            Console.WriteLine(res.Count);
         }
     }
 }

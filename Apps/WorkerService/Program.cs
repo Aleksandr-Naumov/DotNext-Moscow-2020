@@ -6,6 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.EntityFrameworkCore;
+using Infrastructure.Extensions;
+using HightechAngular.Data;
 
 namespace WorkerService
 {
@@ -24,8 +27,18 @@ namespace WorkerService
                     logging.ClearProviders();
                     logging.AddConsole();
                 })
+                .UseDefaultServiceProvider(options =>
+                {
+                    options.ValidateScopes = false;
+                })
                 .ConfigureServices((hostContext, services) =>
                 {
+                    services.AddDbContext<ApplicationDbContext>(ApplicationContextFactory.SetOptions);
+                    services.AddDbContextAndQueryables<ApplicationDbContext>();
+                    services.AddAsyncInitializer<ApplicationDbContextInitializer>();
+                    services.AddScoped<DbContext, ApplicationDbContext>();
+                    services.AddDistributedMemoryCache();
+
                     services.AddTransient<IHandler<IEnumerable<ProductPurchased>>, OrderDomainEventHandler>();
                     services.AddSingleton<IHandler<IEnumerable<IDomainEvent>>, DomainEventDispatcher>();
                     services.AddHostedService<Worker>();

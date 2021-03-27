@@ -20,10 +20,11 @@ namespace WorkerService
         {
             var dict = input.ToDictionary(x => x.ProductId, x => x.Count);
 
-            dict.Select(x => _products
-                            .Where(y => y.Id == x.Key)
-                            .BatchUpdate(Product.UpdatePurchaseCountExpression(dict[x.Value])))
-            .ToList();
+            var res = dict.Select(x => _products
+                               .Where(product => product.Id == x.Key)
+                               .BatchUpdate(Product.UpdatePurchaseCountExpression(dict[x.Key])))
+                           .ToList();
+            Console.WriteLine(res.Count);
         }
     }
 }

@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\HightechAngular.Core\HightechAngular.Core.csproj" />
       <ProjectReference Include="..\..\infrastructure\Infrastructure\Infrastructure.csproj" />
     </ItemGroup>
 </Project>

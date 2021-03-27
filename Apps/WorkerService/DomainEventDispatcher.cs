@@ -4,7 +4,7 @@ using System.Linq;
 using Force.Cqrs;
 using Force.Ddd.DomainEvents;
 
-namespace Infrastructure.Ddd
+namespace WorkerService
 {
     public class DomainEventDispatcher : IHandler<IEnumerable<IDomainEvent>>
     {
@@ -31,7 +31,10 @@ namespace Infrastructure.Ddd
 
 
                 handler = _serviceProvider.GetService(GetHandlerType(typeof(IEnumerable<>).MakeGenericType(eventGroup.Key)));
-                DispatchMultiple((dynamic)handler, eventGroup, (dynamic)eventGroup.First());
+                if (handler != null)
+                {
+                    DispatchMultiple((dynamic)handler, eventGroup, (dynamic)eventGroup.First());
+                }
             }
         }
 

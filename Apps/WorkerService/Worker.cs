@@ -92,7 +92,7 @@ namespace WorkerService
             var type = types.FirstOrDefault(x => x.Name == message.EventType);
             if (type == null)
             {
-                return null;
+                return null!;
             }
 
             try
@@ -106,12 +106,12 @@ namespace WorkerService
                         p.Value.SetValue(domainEvent, Convert.ChangeType(message.Data[p.Key], p.Value.PropertyType));
                     }
                 }
-                return (IDomainEvent)domainEvent;
+                return (IDomainEvent)domainEvent!;
             }
             catch (Exception e)
             {
                 _logger.LogError(e.Message);
-                return null;
+                return null!;
             }
         }
     }

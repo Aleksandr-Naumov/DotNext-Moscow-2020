@@ -48,7 +48,7 @@ namespace WorkerService
             IEnumerable<IDomainEvent> values,
             T dlrHelper /*Type Inference*/)
         {
-            handler?.Handle(values.Cast<T>());
+            handler.Handle(values.Cast<T>());
         }
 
         private Type GetHandlerType(Type type) => typeof(IHandler<>).MakeGenericType(type);

@@ -38,8 +38,8 @@ namespace WorkerService
                     services.AddAsyncInitializer<ApplicationDbContextInitializer>();
                     services.AddScoped<DbContext, ApplicationDbContext>();
 
-                    services.AddTransient<IHandler<IEnumerable<ProductPurchased>>, OrderDomainEventHandler>();
-                    services.AddSingleton<IHandler<IEnumerable<IDomainEvent>>, DomainEventDispatcher>();
+                    services.AddScoped<IHandler<IEnumerable<ProductPurchased>>, OrderDomainEventHandler>();
+                    services.AddScoped<IHandler<IEnumerable<IDomainEvent>>, DomainEventDispatcher>();
                     services.AddHostedService<Worker>();
                 });
     }

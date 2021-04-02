@@ -61,14 +61,7 @@ namespace WorkerService.Scope
                 autoAck: true,
                 consumer: consumer);
 
-            if (_cancell == false)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return _cancell;
         }
         private static DomainEventMessage[] Deserialize(byte[] input)
         {

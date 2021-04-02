@@ -26,7 +26,7 @@ namespace WorkerService.Scope
             _serviceProvider = serviceProvider;
         }
 
-        public async Task DoWork(CancellationToken stoppingToken)
+        public void DoWork()
         {
             var factory = new ConnectionFactory() { HostName = "localhost" };
             using var connection = factory.CreateConnection();
@@ -42,27 +42,22 @@ namespace WorkerService.Scope
                 exchange: ExchangeName,
                 routingKey: "");
 
-            while (!stoppingToken.IsCancellationRequested)
+            Console.WriteLine(" [*] Waiting for logs.");
+
+            var consumer = new EventingBasicConsumer(channel);
+
+            consumer.Received += (model, ea) =>
             {
-                await Task.Delay(1000, stoppingToken);
+                var body = ea.Body.ToArray();
+                var message = Deserialize(body);
 
-                Console.WriteLine(" [*] Waiting for logs.");
+                Dispatch(message);
+            };
 
-                var consumer = new EventingBasicConsumer(channel);
-
-                consumer.Received += (model, ea) =>
-                {
-                    var body = ea.Body.ToArray();
-                    var message = Deserialize(body);
-
-                    Dispatch(message);
-                };
-
-                channel.BasicConsume(
-                    queue: queueName,
-                    autoAck: true,
-                    consumer: consumer);
-            }
+            channel.BasicConsume(
+                queue: queueName,
+                autoAck: true,
+                consumer: consumer);
         }
         private static DomainEventMessage[] Deserialize(byte[] input)
         {
@@ -83,17 +78,17 @@ namespace WorkerService.Scope
             using (var scope = _serviceProvider.CreateScope())
             {
                 var dispatch = scope.ServiceProvider.GetRequiredService<IHandler<IEnumerable<IDomainEvent>>>();
-                dispatch.Handle(domainEvents);
+                dispatch.Handle(domainEvents!);
             }
         }
 
-        private IDomainEvent CreateEvent(DomainEventMessage message)
+        private IDomainEvent? CreateEvent(DomainEventMessage message)
         {
             var types = this.GetType().Assembly.GetTypes();
             var type = types.FirstOrDefault(x => x.Name == message.EventType);
             if (type == null)
             {
-                return null!;
+                return null;
             }
 
             try
@@ -112,7 +107,7 @@ namespace WorkerService.Scope
             catch (Exception e)
             {
                 _logger.LogError(e.Message);
-                return null!;
+                return null;
             }
         }
     }

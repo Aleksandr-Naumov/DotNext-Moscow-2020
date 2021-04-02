@@ -9,6 +9,6 @@ namespace WorkerService.Scope
 {
     internal interface IScopedProcessingService
     {
-        Task DoWork(CancellationToken stoppingToken);
+        void DoWork();
     }
 }

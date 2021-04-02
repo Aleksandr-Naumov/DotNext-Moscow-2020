@@ -19,7 +19,6 @@ namespace WorkerService
 {
     public class Worker : BackgroundService
     {
-        private const string ExchangeName = "domain-events";
         private readonly ILogger<Worker> _logger;
         private readonly IServiceProvider _serviceProvider;
         public Worker(ILogger<Worker> logger, IServiceProvider serviceProvider)
@@ -32,13 +31,18 @@ namespace WorkerService
         {
             _logger.LogInformation($"Worker running at: {DateTimeOffset.Now}");
 
-            using (var scope = _serviceProvider.CreateScope())
+            while (!stoppingToken.IsCancellationRequested)
             {
-                var scopedProcessingService =
-                    scope.ServiceProvider
-                        .GetRequiredService<IScopedProcessingService>();
+                await Task.Delay(1000, stoppingToken);
 
-                await scopedProcessingService.DoWork(stoppingToken);
+                using (var scope = _serviceProvider.CreateScope())
+                {
+                    var scopedProcessingService =
+                        scope.ServiceProvider
+                            .GetRequiredService<IScopedProcessingService>();
+
+                    scopedProcessingService.DoWork();
+                }
             }
         }
     }

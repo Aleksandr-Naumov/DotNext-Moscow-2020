@@ -20,14 +20,14 @@ namespace WorkerService.Scope
         private const string ExchangeName = "domain-events";
         private readonly ILogger<Worker> _logger;
         private readonly IServiceProvider _serviceProvider;
-        private bool _cancellationToken = false;
+        private bool _cancell = false;
         public ScopedProcessingService(ILogger<Worker> logger, IServiceProvider serviceProvider)
         {
             _logger = logger;
             _serviceProvider = serviceProvider;
         }
 
-        public bool DoWork(CancellationToken stoppingToken)
+        public bool TryGetEvents(CancellationToken stoppingToken)
         {
             var factory = new ConnectionFactory() { HostName = "localhost" };
             using var connection = factory.CreateConnection();
@@ -53,7 +53,7 @@ namespace WorkerService.Scope
                 var message = Deserialize(body);
 
                 Dispatch(message);
-                _cancellationToken = true;
+                _cancell = true;
             };
 
             channel.BasicConsume(
@@ -61,7 +61,7 @@ namespace WorkerService.Scope
                 autoAck: true,
                 consumer: consumer);
 
-            if (_cancellationToken == false)
+            if (_cancell == false)
             {
                 return false;
             }

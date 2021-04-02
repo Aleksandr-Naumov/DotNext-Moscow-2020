@@ -41,8 +41,7 @@ namespace WorkerService
                         scope.ServiceProvider
                             .GetRequiredService<IScopedProcessingService>();
 
-                    var token = scopedProcessingService.DoWork(stoppingToken);
-                    if (token == true)
+                    if (scopedProcessingService.TryGetEvents(stoppingToken))
                     {
                         await StopAsync(stoppingToken);
                     }

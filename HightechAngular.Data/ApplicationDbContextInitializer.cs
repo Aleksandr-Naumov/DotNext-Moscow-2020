@@ -14,7 +14,7 @@ namespace HightechAngular.Data
     {
         private readonly ApplicationDbContext _context;
 
-        public ApplicationDbContextInitializer(ApplicationDbContext context, UserManager<User> userManager)
+        public ApplicationDbContextInitializer(ApplicationDbContext context)
         {
             _context = context;
         }

@@ -62,7 +62,10 @@ namespace HightechAngular.Core.Entities
                 _ => throw new NotSupportedException($"Status \"{status}\" is not supported")
             };
         }
-
+        public void RemoveDomainEvents()
+        {
+            _domainEvents._domainEvents.Clear();
+        }
         public IEnumerable<IDomainEvent> GetDomainEvents()
         {
             return _domainEvents;

@@ -28,7 +28,11 @@ namespace HightechAngular.Core.Base
                 .Handle(input)
                 .AwaitAndPipeTo(x =>
                     x.Match(
-                        result => new HandlerResult<OrderStatus>(result.EligibleStatus),
+                        result =>
+                        {
+                            input.Order.RemoveDomainEvents();
+                            return new HandlerResult<OrderStatus>(result.EligibleStatus);
+                        },
                         failure => failure));
         }
     }

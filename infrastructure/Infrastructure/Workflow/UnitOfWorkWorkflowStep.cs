@@ -40,12 +40,12 @@ namespace Infrastructure.Workflow
 
         void Dispatch<T>(ICommand<T> command)
         {
-            _unitOfWork.Commit();
+            //_unitOfWork.Commit();
         }
         
         void Dispatch(ICommand command)
         {
-            _unitOfWork.Commit();
+            //_unitOfWork.Commit();
         }
         
         void Dispatch(object command)

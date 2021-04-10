@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HightechAngular.Core.Event
+namespace WorkerService
 {
     public class OrderDomainEventHandler : IGroupDomainEventHandler<IEnumerable<ProductPurchased>>
     {
@@ -16,16 +16,14 @@ namespace HightechAngular.Core.Event
         {
             _products = products;
         }
-
         public void Handle(IEnumerable<ProductPurchased> input)
         {
             var dict = input.ToDictionary(x => x.ProductId, x => x.Count);
 
-            dict
-                .Select(x => _products
-                                .Where(y => y.Id == x.Key)
-                                .BatchUpdate(Product.UpdatePurchaseCountExpression(dict[x.Value])))
-                .ToList();
+            var res = dict.Select(x => _products
+                               .Where(product => product.Id == x.Key)
+                               .BatchUpdate(Product.UpdatePurchaseCountExpression(dict[x.Key])))
+                           .ToList();
         }
     }
 }

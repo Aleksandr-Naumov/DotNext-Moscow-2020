@@ -27,7 +27,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HightechAngular.Shop", "Hig
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HightechAngular.Data", "HightechAngular.Data\HightechAngular.Data.csproj", "{76381E60-48B2-47DA-BADF-90E42E7147E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerService", "Apps\WorkerService\WorkerService.csproj", "{7DC3A1CA-FEE6-41C1-9667-5910719FE3E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkerService", "Apps\WorkerService\WorkerService.csproj", "{7DC3A1CA-FEE6-41C1-9667-5910719FE3E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{0D26B0F4-137E-424E-BE76-27DD22FD6485}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Extensions;
 using HightechAngular.Data;
+using WorkerService.Scope;
 
 namespace WorkerService
 {
@@ -40,6 +41,7 @@ namespace WorkerService
 
                     services.AddScoped<IHandler<IEnumerable<ProductPurchased>>, OrderDomainEventHandler>();
                     services.AddScoped<IHandler<IEnumerable<IDomainEvent>>, DomainEventDispatcher>();
+                    services.AddScoped<IScopedProcessingService, ScopedProcessingService>();
                     services.AddHostedService<Worker>();
                 });
     }
